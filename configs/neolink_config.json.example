@@ -1,0 +1,16 @@
+# neolink config example for Reolink Argus 4 Pro (battery/solar)
+# Place this file at: ./neolink/config/config.json
+# (or use the web UI at http://pi-ip:8655 after first start)
+
+{
+  "cameras": [
+    {
+      "name": "production1",
+      "username": "admin",
+      "password": "YOUR_CAMERA_PASSWORD",
+      "uid": "YOUR_CAMERA_UID_FROM_APP",
+      "udp": true,
+      "always_on": false
+    }
+  ]
+}

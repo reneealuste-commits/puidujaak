@@ -1,0 +1,36 @@
+# Frigate config.yml example for Argus + neolink (event-based only)
+# Place this at: ./frigate/config/config.yml
+
+mqtt:
+  enabled: false
+
+detectors:
+  cpu1:
+    type: cpu
+
+cameras:
+  production1:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8654/production1
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+      fps: 5
+    record:
+      enabled: true
+      retain:
+        days: 7
+        mode: motion          # only keep motion/event clips
+    snapshots:
+      enabled: true
+      retain:
+        default: 14
+    motion:
+      threshold: 30
+      contour_area: 50

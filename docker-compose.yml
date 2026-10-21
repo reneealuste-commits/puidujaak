@@ -1,0 +1,32 @@
+# Combined neolink + Frigate docker-compose
+# Place this in a folder together with the configs below
+
+services:
+  neolink:
+    image: ghcr.io/borexola/neolink.net:latest
+    container_name: neolink
+    restart: unless-stopped
+    network_mode: host          # required for most Argus battery cameras (UDP)
+    volumes:
+      - ./neolink/config:/config
+    environment:
+      - TZ=Europe/Tallinn
+
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable
+    container_name: frigate
+    restart: unless-stopped
+    privileged: true
+    shm_size: "128mb"
+    ports:
+      - "5000:5000"     # Web UI
+      - "8554:8554"     # RTSP restream
+    volumes:
+      - ./frigate/config:/config
+      - ./frigate/storage:/media/frigate
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - FRIGATE_RTSP_PASSWORD=change_me_strong
+      - TZ=Europe/Tallinn
+    depends_on:
+      - neolink
