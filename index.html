@@ -1,0 +1,1504 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puidujaak.ee – Eripuidu ja puidujääkide turuplats & eeltellimine</title>
+<meta name="description" content="Puidujaak on Eesti eripuidu, tüveõõnsuste, oksaaukude, oksakraede, tüveketaste ja töökojajääkide turuplats. 34 tootegruppi ja 125 fotot (ID001–ID125).">
+<style>
+:root {
+  --d: #261c12;
+  --w: #f7f2e9;
+  --card: #ffffff;
+  --a: #8a5a2b;
+  --a-hover: #6e451e;
+  --green: #1e6b3b;
+  --green-bg: #e7f6ec;
+  --m: #685745;
+  --border: #e4d9c8;
+  --badge-bg: #efe6d5;
+  --showcase: #b34700;
+  --showcase-bg: #fff1e6;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--d);
+  background: var(--w);
+  line-height: 1.55;
+}
+/* Top Navbar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(247, 242, 233, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1240px;
+  margin: auto;
+  padding: 0.75rem 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--d);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.brand-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--a);
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  vertical-align: middle;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  font-size: 0.93rem;
+}
+.nav-links a {
+  color: var(--d);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links a:hover { color: var(--a); }
+
+/* Layout containers */
+header, section, footer {
+  max-width: 1240px;
+  margin: auto;
+  padding: 2rem 1.25rem;
+}
+.hero {
+  padding-top: 2.2rem;
+  padding-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; padding-top: 1.4rem; }
+}
+.hero h1 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.12;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.hero p {
+  font-size: 1.06rem;
+  color: var(--m);
+  margin: 0 0 1rem;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.stat-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+.stat-box b {
+  display: block;
+  font-size: 1.45rem;
+  color: var(--a);
+  line-height: 1.2;
+}
+.stat-box span {
+  font-size: 0.84rem;
+  color: var(--m);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: var(--a);
+  color: #fff;
+  padding: 0.68rem 1.15rem;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn:hover { background: var(--a-hover); }
+.btn:active { transform: translateY(1px); }
+.btn.sec {
+  background: #fff;
+  color: var(--d);
+  border: 1px solid #cbbba4;
+}
+.btn.sec:hover { background: #f2eadc; }
+.btn.interest-btn {
+  width: 100%;
+  background: var(--green);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.98rem;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(30, 107, 59, 0.2);
+}
+.btn.interest-btn:hover { background: #15522c; }
+.btn.interest-btn.sent {
+  background: #14532d;
+  outline: 2px solid #86efac;
+}
+
+/* Filter & Control Bar */
+.controls-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.15rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 12px rgba(47, 36, 24, 0.04);
+}
+.controls-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f0e8da;
+}
+.view-tabs {
+  display: inline-flex;
+  background: #f3ece0;
+  padding: 0.25rem;
+  border-radius: 10px;
+  gap: 0.25rem;
+}
+.view-tab {
+  border: none;
+  background: transparent;
+  color: var(--m);
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.view-tab.active {
+  background: #fff;
+  color: var(--d);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.search-sort {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: flex-end;
+}
+.search-input, .sort-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d5c7b2;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.9rem;
+  background: #fff;
+}
+.search-input { min-width: 220px; }
+
+.filter-group {
+  margin-top: 0.65rem;
+}
+.filter-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--m);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+.pill {
+  border: 1px solid #dfd3c0;
+  background: #faf6ef;
+  color: var(--d);
+  padding: 0.32rem 0.7rem;
+  border-radius: 99px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.pill:hover { border-color: var(--a); background: #f3eadb; }
+.pill.active {
+  background: var(--d);
+  color: #fff;
+  border-color: var(--d);
+}
+.pill.highlight-pill {
+  border-color: #e09f67;
+  background: #fff4ea;
+  color: #8f3900;
+  font-weight: 600;
+}
+.pill.highlight-pill.active {
+  background: var(--showcase);
+  color: #fff;
+  border-color: var(--showcase);
+}
+.pill .cnt {
+  opacity: 0.75;
+  font-size: 0.78rem;
+  margin-left: 0.2rem;
+}
+
+/* Product Grid */
+.catalog-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  color: var(--m);
+}
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.25rem;
+}
+.pcard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.pcard:hover {
+  box-shadow: 0 8px 24px rgba(47, 36, 24, 0.09);
+}
+.pcard.showcase-card {
+  border: 1.5px solid #e09f67;
+}
+.pcard-media {
+  position: relative;
+  background: #ece3d5;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.pcard-media img.main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.25s;
+}
+.pcard-TopBadges {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.4rem;
+  pointer-events: none;
+}
+.badge-pid {
+  background: rgba(38, 28, 18, 0.86);
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.22rem 0.52rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+.badge-showcase {
+  background: var(--showcase);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.pcard-BottomBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(25, 18, 11, 0.85));
+  color: #fff;
+  padding: 1.1rem 0.75rem 0.45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+.short-filename {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.15rem 0.45rem;
+  border-radius: 5px;
+  color: #ffd9a8;
+  font-weight: 600;
+}
+.nav-arrows {
+  display: flex;
+  gap: 0.25rem;
+}
+.nav-arrows button {
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--d);
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+}
+.nav-arrows button:hover { background: #fff; }
+
+/* Thumbnail strip for multi-photo product cards */
+.thumb-strip {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.45rem 0.75rem;
+  background: #f8f3eb;
+  border-bottom: 1px solid #ede4d4;
+  overflow-x: auto;
+}
+.thumb-btn {
+  border: 2px solid transparent;
+  padding: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 42px;
+  height: 34px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: #e2d7c5;
+  position: relative;
+}
+.thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.thumb-btn.active {
+  border-color: var(--a);
+  box-shadow: 0 0 0 1px var(--a);
+}
+.thumb-btn span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.68);
+  color: #fff;
+  font-size: 0.58rem;
+  padding: 0 3px;
+  line-height: 1.2;
+}
+
+.pcard-body {
+  padding: 0.9rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+}
+.cat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+.cat-tag {
+  background: var(--badge-bg);
+  color: #593e22;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.16rem 0.52rem;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.cat-tag.special {
+  background: #e4f0e8;
+  color: #16562e;
+}
+.dim-badge {
+  background: #eef2f6;
+  color: #334155;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.16rem 0.5rem;
+  border-radius: 6px;
+}
+.dim-badge.has-dim {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.pcard-title {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.3;
+  color: var(--d);
+}
+.pcard-desc {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--m);
+}
+.showcase-box {
+  background: var(--showcase-bg);
+  border-left: 3px solid var(--showcase);
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: #692800;
+}
+.dim-editor {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #faf6f0;
+  border: 1px dashed #d6c7b2;
+  padding: 0.35rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+.dim-editor label {
+  color: var(--m);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.dim-editor input {
+  width: 78px;
+  padding: 0.24rem 0.4rem;
+  border: 1px solid #cbbba4;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  background: #fff;
+}
+.dim-editor .scale-hint {
+  font-size: 0.74rem;
+  color: var(--m);
+  margin-left: auto;
+  text-align: right;
+}
+.pcard-actions {
+  margin-top: 0.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Modal for Pre-order / Interest */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 18, 12, 0.58);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  backdrop-filter: blur(3px);
+}
+.modal.on { display: flex; }
+.mk {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.4rem;
+  max-width: 480px;
+  width: 100%;
+  max-height: 92vh;
+  overflow: auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+}
+.status-banner {
+  background: var(--green-bg);
+  border: 1px solid #86efac;
+  color: #14532d;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.9rem;
+}
+.status-banner.sending {
+  background: #fef9c3;
+  border-color: #fde047;
+  color: #713f12;
+}
+.mk label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--m);
+  margin-top: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+.mk input, .mk textarea {
+  width: 100%;
+  padding: 0.58rem 0.7rem;
+  border: 1px solid #d5c7b2;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.mk textarea { min-height: 68px; resize: vertical; }
+
+/* Code & Naming System Collapsible Section */
+.code-box {
+  background: #1e1915;
+  color: #f3eadb;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.15rem;
+}
+.card h3 { margin-top: 0; margin-bottom: 0.4rem; }
+.note { font-size: 0.88rem; color: var(--m); }
+
+/* Toast notification */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 120;
+  background: #14532d;
+  color: #fff;
+  padding: 0.85rem 1.15rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  font-size: 0.92rem;
+  max-width: 380px;
+  display: none;
+}
+#toast.show { display: block; }
+footer {
+  border-top: 1px solid var(--border);
+  color: var(--m);
+  font-size: 0.88rem;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <nav>
+    <a href="#" class="brand">
+      🪵 Puidujaak.ee
+      <span class="brand-badge">Eeltellimine & Turuplats</span>
+    </a>
+    <div class="nav-links">
+      <a href="#turuplats"><b>Turuplats (34 toodet / 125 fotot)</b></a>
+      <a href="#esiletoodud" onclick="setShowcaseFilter();return false;">🌟 Kliendinäidised</a>
+      <a href="#susteem">ID & Kategooriate süsteem</a>
+      <a href="#pildista">Pildista puitu</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+</div>
+
+<header class="hero">
+  <div>
+    <h1>Iga puidutükk ja puidujääk loeb.</h1>
+    <p>
+      Eripuidu, tüveõõnsuste, oksaaukude, oksakraede, tüveketaste ja töökojajääkide turuplats.
+      Vali huvipakkuv tükk ja vajuta <b>„Olen huvitatud“</b> — makset ei küsita, sinu huviteade jõuab kohe e-kirjaga müüjani!
+    </p>
+    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+      <a class="btn" href="#turuplats">Sirvi 34 toodet (125 fotot) ↓</a>
+      <button class="btn sec" type="button" onclick="setShowcaseFilter()">Vaata põnevaid puidujääke (käsnjas / erikuju)</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-box">
+      <b>34 toodet</b>
+      <span>PUIDUJAK-001 kuni PUIDUJAK-034</span>
+    </div>
+    <div class="stat-box">
+      <b>125 fotot</b>
+      <span>Süsteemi ID-d ID001 kuni ID125</span>
+    </div>
+    <div class="stat-box">
+      <b>11 kategooriat</b>
+      <span>oksaauk, oksakrae, tuveoonsus, ketas, koor…</span>
+    </div>
+    <div class="stat-box">
+      <b>0 € ettemaks</b>
+      <span>1-klikiga „Olen huvitatud“ eeltellimine</span>
+    </div>
+  </div>
+</header>
+
+<section id="turuplats" style="padding-top:0.5rem;">
+  <div class="controls-panel">
+    <div class="controls-top">
+      <div class="view-tabs" role="tablist">
+        <button type="button" class="view-tab active" id="tabProducts" onclick="switchView('products')">
+          📦 34 Tootegruppi (PUIDUJAK-001..034)
+        </button>
+        <button type="button" class="view-tab" id="tabPhotos" onclick="switchView('photos')">
+          🖼️ Kõik 125 Fotot (ID001..ID125)
+        </button>
+      </div>
+      <div class="search-sort">
+        <input type="search" id="searchInput" class="search-input" placeholder="Otsi ID, failinime või kirjelduse järgi..." oninput="renderCatalog()">
+        <select id="sortSelect" class="sort-select" onchange="renderCatalog()">
+          <option value="id_asc">Järjestus: ID (001 → 125)</option>
+          <option value="cat_asc">Sorteeri: Kategooria (A → Z failinime järgi)</option>
+          <option value="showcase_first">Esimesena: 🌟 Kliendinäidised (käsnjas & erikuju)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <span class="filter-label">1. Filtreeri kategooria järgi (klõpsa sorteerimiseks):</span>
+      <div class="pills" id="categoryPills"></div>
+    </div>
+
+    <div class="filter-group" style="margin-top:0.8rem;">
+      <span class="filter-label">2. Filtreeri mõõduklassi järgi (täieneb automaatselt mõõdu sisestamisel):</span>
+      <div class="pills" id="dimPills"></div>
+    </div>
+  </div>
+
+  <div class="catalog-status">
+    <div id="resultSummary">Laen tooteid...</div>
+    <div class="note">💡 <b>Vihje:</b> Saad iga kaardi peal ka ise umbkaudse mõõdu (cm) sisestada — failinimi ja mõõduklass (<code>alla30cm</code>, <code>alla50cm</code>, <code>alla1m</code>, <code>yle1m</code>) uuenevad kohe!</div>
+  </div>
+
+  <div class="market-grid" id="catalogGrid"></div>
+</section>
+
+<!-- Pre-Order / Olen Huvitatud Modal -->
+<div class="modal" id="interestModal" role="dialog" aria-modal="true">
+  <div class="mk">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;">
+      <h3 style="margin:0;font-size:1.2rem;" id="modalHeading">Olen huvitatud</h3>
+      <button type="button" class="btn sec" style="padding:0.25rem 0.6rem;font-size:0.85rem;" onclick="closeInterestModal()">✕ Sulge</button>
+    </div>
+
+    <div id="modalNotificationBanner" class="status-banner" style="margin-top:0.75rem;">
+      ⚡ Saadame huviteadet müüja Gmailile...
+    </div>
+
+    <div style="display:flex;gap:0.75rem;align-items:center;background:#faf6ef;padding:0.65rem;border-radius:10px;border:1px solid var(--border);">
+      <img id="modalThumb" src="" alt="" style="width:76px;height:62px;object-fit:cover;border-radius:8px;flex-shrink:0;">
+      <div style="font-size:0.86rem;line-height:1.35;">
+        <div><b id="modalProdId"></b> · <span id="modalPhotoId" style="font-family:monospace;font-weight:700;color:var(--a);"></span></div>
+        <div id="modalShortTitle" style="font-family:monospace;font-size:0.82rem;color:#334155;"></div>
+        <div id="modalProdTitle" style="color:var(--m);margin-top:2px;"></div>
+      </div>
+    </div>
+
+    <form id="interestDetailForm" onsubmit="submitOptionalDetails(event)">
+      <p class="note" style="margin:0.75rem 0 0.3rem;">
+        <b>Eeltellimine on tasuta ja kohustuseta.</b> Esmane teavitus toote ID ja lühinimega on juba müüjale teele pandud! Kui soovid, lisa allapoole ka oma kontakt või mõõdusoov:
+      </p>
+
+      <label for="optDim">Umbkaudne mõõt (cm) – valikuline (arvutab automaatselt mõõduklassi):</label>
+      <input type="text" id="optDim" placeholder="nt 25, 45, 80 või 120 (jäta tühjaks, kui ei tea)" oninput="onModalDimInput(this.value)">
+      <div id="modalDimPreview" style="font-size:0.78rem;color:var(--a);margin-top:2px;font-family:monospace;"></div>
+
+      <label for="optName">Sinu nimi (valikuline):</label>
+      <input type="text" id="optName" placeholder="nt Jüri või ettevõtte nimi">
+
+      <label for="optContact">E-post või telefon (valikuline, et müüja saaks vastata):</label>
+      <input type="text" id="optContact" placeholder="nt sinu@email.ee või +372 5xxxxxxx">
+
+      <label for="optNote">Täpsustus või küsimus (valikuline):</label>
+      <textarea id="optNote" placeholder="nt Soovin teada tüveketta paksust või tulla vaatama..."></textarea>
+
+      <div style="display:flex;gap:0.5rem;margin-top:0.9rem;flex-wrap:wrap;">
+        <button type="submit" class="btn interest-btn" id="optSubmitBtn" style="flex:1;">
+          📩 Saada lisainfo / kontakt müüjale
+        </button>
+        <button type="button" class="btn sec" onclick="closeInterestModal()">Valmis</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Lightbox Modal for full photo view -->
+<div class="modal" id="lightboxModal" onclick="if(event.target===this)this.classList.remove('on')">
+  <div class="mk" style="max-width:860px;padding:1rem;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;">
+      <div>
+        <b id="lbTitle" style="font-family:monospace;font-size:1rem;"></b>
+        <span id="lbSub" class="note" style="margin-left:0.5rem;"></span>
+      </div>
+      <button type="button" class="btn sec" style="padding:0.3rem 0.7rem;" onclick="document.getElementById('lightboxModal').classList.remove('on')">✕ Sulge</button>
+    </div>
+    <img id="lbImg" src="" alt="" style="width:100%;max-height:72vh;object-fit:contain;background:#1a140f;border-radius:10px;display:block;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.7rem;flex-wrap:wrap;gap:0.5rem;">
+      <a id="lbDriveLink" href="#" target="_blank" rel="noopener" class="note" style="color:var(--a);">Ava originaalfoto Google Drive'is ↗</a>
+      <button type="button" class="btn interest-btn" style="width:auto;padding:0.55rem 1.2rem;" id="lbInterestBtn">👋 Olen huvitatud sellest tükist</button>
+    </div>
+  </div>
+</div>
+
+<section id="susteem">
+  <h2>ID, kategooriate ja mõõduklasside süsteem</h2>
+  <p class="note">
+    Kõik 125 fotot (34 tootegruppi <code>PUIDUJAK-001</code> kuni <code>PUIDUJAK-034</code>) kasutavad lühikest, kategooria järgi sorteeritavat nimevalemit:
+    ilma mõõduta <code>{kategooria}_ID{001..125}.jpg</code> (nt <code>tuveoonsus_ID072.jpg</code>, <code>oksaauk_ID091.jpg</code>, <code>oksakrae_ID095.jpg</code>) ja
+    koos kasutaja sisestatud mõõduga <code>{kategooria}_{mooduklass}_ID{001..125}.jpg</code> (nt <code>oksaauk_alla30cm_ID091.jpg</code>).
+  </p>
+  <div class="grid" style="margin-bottom:1rem;">
+    <div class="card">
+      <h3>Erilised puidudefektid</h3>
+      <p class="note">
+        <b><code>tuveoonsus</code></b> – käsnjas, seest pehkinud või õõnes tüveosa (12 fotot)<br>
+        <b><code>oksaauk</code></b> – loodusliku oksaauguga koor/puit (2 fotot: ID073, ID091)<br>
+        <b><code>oksakrae</code></b> – oksakraega tüvejupp või koor (2 fotot: ID092, ID095)
+      </p>
+    </div>
+    <div class="card">
+      <h3>Kettad, koor ja erikuju</h3>
+      <p class="note">
+        <b><code>ketas</code></b> – tüvekettad ja ristlõiked, sh südamekujuline ID074 (8 fotot)<br>
+        <b><code>koor</code></b> – paks korbatanud koor ja pahatükid (6 fotot)<br>
+        <b><code>erikuju</code></b> – CNC/laserlõikuse ja nikerdatud jäägid (8 fotot)
+      </p>
+    </div>
+    <div class="card">
+      <h3>Automaatsed mõõduklassid</h3>
+      <p class="note">
+        Mõõtu pildilt ei arvata. Kui sisestad mõõdu (cm), tekib klass:<br>
+        • <code>alla30cm</code> (&lt; 30 cm)<br>
+        • <code>alla50cm</code> (30–49 cm)<br>
+        • <code>alla1m</code> (50–99 cm)<br>
+        • <code>yle1m</code> (≥ 100 cm)
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="pildista">
+  <h2>Pildista oma puitu</h2>
+  <p class="note">Tee oma puidutükist pilt otse siin lehel. Pildid jäävad sinu seadmesse.</p>
+  <div id="kaam">
+    <button class="btn" id="ava">Ava kaamera</button>
+    <button class="btn" id="tee" disabled>Tee pilt</button>
+    <button class="btn sec" id="sulge" disabled>Sulge kaamera</button>
+    <label class="btn sec" style="cursor:pointer">Vali pilt / telefoni kaamera<input type="file" id="fail" accept="image/*" capture="environment" multiple hidden></label>
+    <p class="note" style="margin-top:0.6rem;">💡 Aseta joonlaud, mõõdulint või 1-eurone münt puidu kõrvale, et suurust saaks täpselt hinnata.</p>
+    <label class="note"><input type="checkbox" id="templi" checked> Lisa pildile mündi mõõtkava märge</label>
+    <div class="vaade" style="position:relative;max-width:640px;"><video id="vid" autoplay playsinline muted style="width:100%;max-width:640px;border-radius:12px;background:#000;display:none;margin-top:1rem;"></video></div>
+    <p class="note" id="olek"></p>
+  </div>
+  <canvas id="lõuend" hidden></canvas>
+  <div id="pildid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-top:1rem;"></div>
+</section>
+
+<section id="kontakt">
+  <h2>Kontakt & Eeltellimused</h2>
+  <p>
+    Kõik <b>„Olen huvitatud“</b> nupuvajutused saadavad automaatse teavituse otse müüja Gmailile
+    (<b>Renee Aluste</b> · <a href="mailto:reneealuste@gmail.com">reneealuste@gmail.com</a> / <a href="mailto:renee@kaksarboristi.ee">renee@kaksarboristi.ee</a>).
+  </p>
+</section>
+
+<footer>
+  © 2026 Puidujaak OÜ · Eesti eripuidu ja puidujääkide turuplats · 34 tootegruppi / 125 fotot.
+</footer>
+
+<div id="toast"></div>
+
+<script>
+const CATALOG = {"products": [{"product_id": "PUIDUJAK-001", "title": "Pinnakattega plaaditükid (töökoja jääk)", "scale_ref": "Ilma joonlauata laual", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID001", "cover_short_title": "plaat_ID001.jpg", "photo_count": 6, "id_range": "ID001–ID006", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID001", "seq_nr": 1, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID001.jpg", "original_name": "PXL_20261016_210227326.jpg", "drive_id": "1AYFXEnMlzx1bnkP2yygQGql0iDVuGrGK", "drive_link": "https://drive.google.com/file/d/1AYFXEnMlzx1bnkP2yygQGql0iDVuGrGK/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Pinnakattega plaaditükk laual (töökoja taust)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID002", "seq_nr": 2, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID002.jpg", "original_name": "PXL_20261016_210235641.jpg", "drive_id": "19LIObLk2fULyvSf9-7D0GfjWEMOPspC1", "drive_link": "https://drive.google.com/file/d/19LIObLk2fULyvSf9-7D0GfjWEMOPspC1/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Pinnakattega plaaditükk laual (töökoja taust)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID003", "seq_nr": 3, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID003.jpg", "original_name": "PXL_20261016_210412601.jpg", "drive_id": "1glxFtcoweQWDJD7S1WB6_B687YbfYw6o", "drive_link": "https://drive.google.com/file/d/1glxFtcoweQWDJD7S1WB6_B687YbfYw6o/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Hele plaaditükk tumedal pinnal", "showcase_tag": "", "showcase_note": ""}, {"id": "ID004", "seq_nr": 4, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID004.jpg", "original_name": "PXL_20261016_210424950.jpg", "drive_id": "1LfVBzj0ge9LX_ejWYv9b-lDGFohu2UQ7", "drive_link": "https://drive.google.com/file/d/1LfVBzj0ge9LX_ejWYv9b-lDGFohu2UQ7/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Pinnakattega plaaditükk laual (töökoja taust)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID005", "seq_nr": 5, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID005.jpg", "original_name": "PXL_20261016_210439650.jpg", "drive_id": "1OhyLTYVPptE6k9bULSecKujwaZEKjX0W", "drive_link": "https://drive.google.com/file/d/1OhyLTYVPptE6k9bULSecKujwaZEKjX0W/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Heleroheline plaaditükk laual", "showcase_tag": "", "showcase_note": ""}, {"id": "ID006", "seq_nr": 6, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID006.jpg", "original_name": "PXL_20261016_210451707.jpg", "drive_id": "1gqnAkw7BlAwij3W-XxWFoABuAoQmg3um", "drive_link": "https://drive.google.com/file/d/1gqnAkw7BlAwij3W-XxWFoABuAoQmg3um/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Kitsas plaadiriba laual", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-002", "title": "Valge kattega sandwich-plaat (seeria A)", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID007", "cover_short_title": "plaat_ID007.jpg", "photo_count": 6, "id_range": "ID007–ID012", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID007", "seq_nr": 7, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID007.jpg", "original_name": "PXL_20261016_235720480.jpg", "drive_id": "1Na1Qtr9Ieef-VKv8QwmogH4U481StwoI", "drive_link": "https://drive.google.com/file/d/1Na1Qtr9Ieef-VKv8QwmogH4U481StwoI/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID008", "seq_nr": 8, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID008.jpg", "original_name": "PXL_20261016_235739682.jpg", "drive_id": "1eLoagdw4nDSD6IDyth2vEfVUyqxWB-Em", "drive_link": "https://drive.google.com/file/d/1eLoagdw4nDSD6IDyth2vEfVUyqxWB-Em/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID009", "seq_nr": 9, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID009.jpg", "original_name": "PXL_20261016_235747655.jpg", "drive_id": "16eKk8Zvt-Z3Tm1kRWsbDg-TrAOEBdjoi", "drive_link": "https://drive.google.com/file/d/16eKk8Zvt-Z3Tm1kRWsbDg-TrAOEBdjoi/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID010", "seq_nr": 10, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID010.jpg", "original_name": "PXL_20261016_235758389.jpg", "drive_id": "1XuJk7VecdnIp4_nZW1FaITGHYFWyXZ9C", "drive_link": "https://drive.google.com/file/d/1XuJk7VecdnIp4_nZW1FaITGHYFWyXZ9C/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID011", "seq_nr": 11, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID011.jpg", "original_name": "PXL_20261016_235831601.jpg", "drive_id": "1r6hD0-2naXwIaf9HNFKAIqeub3U-nfjs", "drive_link": "https://drive.google.com/file/d/1r6hD0-2naXwIaf9HNFKAIqeub3U-nfjs/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID012", "seq_nr": 12, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID012.jpg", "original_name": "PXL_20261016_235859973.jpg", "drive_id": "1oIPWhbjnsZvDxEmfRpNTwFwHg_1u7nIc", "drive_link": "https://drive.google.com/file/d/1oIPWhbjnsZvDxEmfRpNTwFwHg_1u7nIc/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-003", "title": "Valge kattega sandwich-plaat (seeria B)", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID013", "cover_short_title": "plaat_ID013.jpg", "photo_count": 3, "id_range": "ID013–ID015", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID013", "seq_nr": 13, "product_id": "PUIDUJAK-003", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID013.jpg", "original_name": "PXL_20261017_000001174.jpg", "drive_id": "1V0gloqF-zp3I9j6ldoWPKWJ-V4S-rjzX", "drive_link": "https://drive.google.com/file/d/1V0gloqF-zp3I9j6ldoWPKWJ-V4S-rjzX/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID014", "seq_nr": 14, "product_id": "PUIDUJAK-003", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID014.jpg", "original_name": "PXL_20261017_000009315.MP.jpg", "drive_id": "1r2T2_qKiF7hpnp3UgsnP_eaJ_NveoJT_", "drive_link": "https://drive.google.com/file/d/1r2T2_qKiF7hpnp3UgsnP_eaJ_NveoJT_/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID015", "seq_nr": 15, "product_id": "PUIDUJAK-003", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID015.jpg", "original_name": "PXL_20261017_000012135.MP.jpg", "drive_id": "1gTp0oEV7IEJlAXQtCV7FiOwkxAMeUciP", "drive_link": "https://drive.google.com/file/d/1gTp0oEV7IEJlAXQtCV7FiOwkxAMeUciP/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-004", "title": "Valge kattega sandwich-plaat rohelise täidisega", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID016", "cover_short_title": "plaat_ID016.jpg", "photo_count": 4, "id_range": "ID016–ID019", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID016", "seq_nr": 16, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID016.jpg", "original_name": "PXL_20261017_000125691.MP.jpg", "drive_id": "1CC-9HKbv9M58pJQP1LLR2_PuwOkS4TVx", "drive_link": "https://drive.google.com/file/d/1CC-9HKbv9M58pJQP1LLR2_PuwOkS4TVx/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga  (toode1.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID017", "seq_nr": 17, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID017.jpg", "original_name": "PXL_20261017_000234730.MP.jpg", "drive_id": "1ZMLfxglQT9V7NQ2Bg5JV7ToRxUA16Aeg", "drive_link": "https://drive.google.com/file/d/1ZMLfxglQT9V7NQ2Bg5JV7ToRxUA16Aeg/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID018", "seq_nr": 18, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID018.jpg", "original_name": "PXL_20261017_000243025.MP.jpg", "drive_id": "1BOqhCMrBLMv8t866b2Cv3Ti6jztRAxgo", "drive_link": "https://drive.google.com/file/d/1BOqhCMrBLMv8t866b2Cv3Ti6jztRAxgo/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID019", "seq_nr": 19, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID019.jpg", "original_name": "PXL_20261017_000331902.MP.jpg", "drive_id": "1I2MImlwGgwRTv4BZNSeBASyHQEBxEzlA", "drive_link": "https://drive.google.com/file/d/1I2MImlwGgwRTv4BZNSeBASyHQEBxEzlA/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-005", "title": "Õhuke tume spoon ja heledad liistud", "scale_ref": "Metalljoonlaud fotol", "primary_category": "laud", "categories": ["laud"], "cover_index": 0, "cover_photo_id": "ID020", "cover_short_title": "laud_ID020.jpg", "photo_count": 4, "id_range": "ID020–ID023", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID020", "seq_nr": 20, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID020.jpg", "original_name": "PXL_20261017_000419072.MP.jpg", "drive_id": "1hhs5VtBF0XDmBmnwarMrPaKfY0GtDguB", "drive_link": "https://drive.google.com/file/d/1hhs5VtBF0XDmBmnwarMrPaKfY0GtDguB/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Õhuke tumedam spoonitükk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID021", "seq_nr": 21, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID021.jpg", "original_name": "PXL_20261017_000502750.MP.jpg", "drive_id": "1pWWJLvG61Cj1KB5wtN_qJfOIcUMR67GR", "drive_link": "https://drive.google.com/file/d/1pWWJLvG61Cj1KB5wtN_qJfOIcUMR67GR/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga  (toode2.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID022", "seq_nr": 22, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID022.jpg", "original_name": "PXL_20261017_000506925.MP.jpg", "drive_id": "1zC446Qz-A1zDl2U4vciusyk93Aky9cGZ", "drive_link": "https://drive.google.com/file/d/1zC446Qz-A1zDl2U4vciusyk93Aky9cGZ/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID023", "seq_nr": 23, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID023.jpg", "original_name": "PXL_20261017_000614335.MP.jpg", "drive_id": "1W6dE8OouzREGHYEmRAvu-_VCpMOhSfgL", "drive_link": "https://drive.google.com/file/d/1W6dE8OouzREGHYEmRAvu-_VCpMOhSfgL/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-006", "title": "Heledad õhukesed puitlauakesed / liistud", "scale_ref": "Metalljoonlaud fotol", "primary_category": "laud", "categories": ["laud"], "cover_index": 0, "cover_photo_id": "ID024", "cover_short_title": "laud_ID024.jpg", "photo_count": 4, "id_range": "ID024–ID027", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID024", "seq_nr": 24, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID024.jpg", "original_name": "PXL_20261017_000746935.MP.jpg", "drive_id": "14ZBWonoRVu-fEi_PKQYCMgVGt2H7Onco", "drive_link": "https://drive.google.com/file/d/14ZBWonoRVu-fEi_PKQYCMgVGt2H7Onco/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID025", "seq_nr": 25, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID025.jpg", "original_name": "PXL_20261017_000824696.MP.jpg", "drive_id": "1uC7u-dZ1aCx0TRn1dznywUPB4NSm_3r2", "drive_link": "https://drive.google.com/file/d/1uC7u-dZ1aCx0TRn1dznywUPB4NSm_3r2/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID026", "seq_nr": 26, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID026.jpg", "original_name": "PXL_20261017_000829727.MP.jpg", "drive_id": "1xYd_2MM-HqOfNdH4bxJMEvh6cH1gxqru", "drive_link": "https://drive.google.com/file/d/1xYd_2MM-HqOfNdH4bxJMEvh6cH1gxqru/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID027", "seq_nr": 27, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID027.jpg", "original_name": "PXL_20261017_000840480.MP.jpg", "drive_id": "1JbLKEeitEo4Gukp5FDZr9kUgKFDrl14T", "drive_link": "https://drive.google.com/file/d/1JbLKEeitEo4Gukp5FDZr9kUgKFDrl14T/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-007", "title": "Kitsad heledad liistud ja vineeriservad", "scale_ref": "Metalljoonlaud fotol", "primary_category": "laud", "categories": ["laud", "plaat"], "cover_index": 0, "cover_photo_id": "ID028", "cover_short_title": "laud_ID028.jpg", "photo_count": 5, "id_range": "ID028–ID032", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID028", "seq_nr": 28, "product_id": "PUIDUJAK-007", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID028.jpg", "original_name": "PXL_20261017_000955939.MP.jpg", "drive_id": "1jI1lQNSRfv5biF1tqmG4OyO7camfp9To", "drive_link": "https://drive.google.com/file/d/1jI1lQNSRfv5biF1tqmG4OyO7camfp9To/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID029", "seq_nr": 29, "product_id": "PUIDUJAK-007", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID029.jpg", "original_name": "PXL_20261017_001058790.MP.jpg", "drive_id": "1LW3BUGDW0b2As7p5oqtJ-vf5kgxe-6Vd", "drive_link": "https://drive.google.com/file/d/1LW3BUGDW0b2As7p5oqtJ-vf5kgxe-6Vd/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Joonlaua lähivõte puidu peal", "showcase_tag": "", "showcase_note": ""}, {"id": "ID030", "seq_nr": 30, "product_id": "PUIDUJAK-007", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID030.jpg", "original_name": "PXL_20261017_001106301.MP.jpg", "drive_id": "1qlIMMMWFN4k7OepR6ITkJZLsvrzpgjMo", "drive_link": "https://drive.google.com/file/d/1qlIMMMWFN4k7OepR6ITkJZLsvrzpgjMo/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Kitsas hele liist joonlaua kõrval", "showcase_tag": "", "showcase_note": ""}, {"id": "ID031", "seq_nr": 31, "product_id": "PUIDUJAK-007", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID031.jpg", "original_name": "PXL_20261017_001138417.MP.jpg", "drive_id": "1tzcdn6nfsALbuZ61cvg5UEVfYSXpRokA", "drive_link": "https://drive.google.com/file/d/1tzcdn6nfsALbuZ61cvg5UEVfYSXpRokA/view?usp=drivesdk", "short_desc": "Vineeri/kihtplaadi serv", "detail_desc": "Vineeri/kihtplaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID032", "seq_nr": 32, "product_id": "PUIDUJAK-007", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID032.jpg", "original_name": "PXL_20261017_001209039.MP.jpg", "drive_id": "1pGDptTJELkSFP41iXKSpEMULQ51_Q5Hi", "drive_link": "https://drive.google.com/file/d/1pGDptTJELkSFP41iXKSpEMULQ51_Q5Hi/view?usp=drivesdk", "short_desc": "Vineeri/kihtplaadi serv", "detail_desc": "Vineeri/kihtplaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-008", "title": "Heledad puitdetailid ja kihtplaadi serv", "scale_ref": "Metalljoonlaud fotol", "primary_category": "laud", "categories": ["laud", "plaat"], "cover_index": 0, "cover_photo_id": "ID033", "cover_short_title": "laud_ID033.jpg", "photo_count": 3, "id_range": "ID033–ID035", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID033", "seq_nr": 33, "product_id": "PUIDUJAK-008", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID033.jpg", "original_name": "PXL_20261017_001314347.MP.jpg", "drive_id": "1lBPrdHIZp44ra4j-7Cw_ZBwXDJWoA6Lx", "drive_link": "https://drive.google.com/file/d/1lBPrdHIZp44ra4j-7Cw_ZBwXDJWoA6Lx/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele puitdetail joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID034", "seq_nr": 34, "product_id": "PUIDUJAK-008", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID034.jpg", "original_name": "PXL_20261017_001417123.MP.jpg", "drive_id": "1T6e6Wufu9m6AS9K4YrSppEzn76En5T9s", "drive_link": "https://drive.google.com/file/d/1T6e6Wufu9m6AS9K4YrSppEzn76En5T9s/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele puitdetail joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID035", "seq_nr": 35, "product_id": "PUIDUJAK-008", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID035.jpg", "original_name": "PXL_20261017_001528264.MP.jpg", "drive_id": "1tuLPIDvj8kR_2pZ3fgkiFxeXltr0OP8V", "drive_link": "https://drive.google.com/file/d/1tuLPIDvj8kR_2pZ3fgkiFxeXltr0OP8V/view?usp=drivesdk", "short_desc": "Vineeri/kihtplaadi serv", "detail_desc": "Vineeri/kihtplaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-009", "title": "Valge pinnakattega ruutprofiil / klots", "scale_ref": "Metalljoonlaud fotol", "primary_category": "klots", "categories": ["klots"], "cover_index": 0, "cover_photo_id": "ID036", "cover_short_title": "klots_ID036.jpg", "photo_count": 3, "id_range": "ID036–ID038", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID036", "seq_nr": 36, "product_id": "PUIDUJAK-009", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID036.jpg", "original_name": "PXL_20261017_001713447.MP.jpg", "drive_id": "1b0LRa5hawU98IbFYIKunGNs3fVSywvdJ", "drive_link": "https://drive.google.com/file/d/1b0LRa5hawU98IbFYIKunGNs3fVSywvdJ/view?usp=drivesdk", "short_desc": "Valge ruutprofiil", "detail_desc": "Valge kattega ruutprofiil joonlauaga  (toode3.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID037", "seq_nr": 37, "product_id": "PUIDUJAK-009", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID037.jpg", "original_name": "PXL_20261017_001715420.MP.jpg", "drive_id": "1_RAKTWsNr5qklyuWDS3ufYdM3gBeaa_o", "drive_link": "https://drive.google.com/file/d/1_RAKTWsNr5qklyuWDS3ufYdM3gBeaa_o/view?usp=drivesdk", "short_desc": "Valge ruutprofiil", "detail_desc": "Valge kattega ruutprofiil joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID038", "seq_nr": 38, "product_id": "PUIDUJAK-009", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID038.jpg", "original_name": "PXL_20261017_001722490.MP.jpg", "drive_id": "13KAeLLyMTjnQ9speSJqU806xaMmQm2Qo", "drive_link": "https://drive.google.com/file/d/13KAeLLyMTjnQ9speSJqU806xaMmQm2Qo/view?usp=drivesdk", "short_desc": "Valge ruutprofiil", "detail_desc": "Valge kattega ruutprofiil joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-010", "title": "Valge kattega plaadiribad (partii 1)", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID039", "cover_short_title": "plaat_ID039.jpg", "photo_count": 6, "id_range": "ID039–ID044", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID039", "seq_nr": 39, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID039.jpg", "original_name": "PXL_20261017_001814828.MP.jpg", "drive_id": "1IXiiNvrtIBkECPE49I60WPvggrpv-WKo", "drive_link": "https://drive.google.com/file/d/1IXiiNvrtIBkECPE49I60WPvggrpv-WKo/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID040", "seq_nr": 40, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID040.jpg", "original_name": "PXL_20261017_001826221.MP.jpg", "drive_id": "1HA0oX6Txc7Ni-DnTp4hdGTvgUBo_xWc_", "drive_link": "https://drive.google.com/file/d/1HA0oX6Txc7Ni-DnTp4hdGTvgUBo_xWc_/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID041", "seq_nr": 41, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID041.jpg", "original_name": "PXL_20261017_001828423.MP.jpg", "drive_id": "1g2lSsUqApuCr2d9zOKmray5YOlUcAjLc", "drive_link": "https://drive.google.com/file/d/1g2lSsUqApuCr2d9zOKmray5YOlUcAjLc/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID042", "seq_nr": 42, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID042.jpg", "original_name": "PXL_20261017_001911242.MP.jpg", "drive_id": "1LFiE-8IKHK_hKc7jRgbpFuMKnTQQsepS", "drive_link": "https://drive.google.com/file/d/1LFiE-8IKHK_hKc7jRgbpFuMKnTQQsepS/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID043", "seq_nr": 43, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID043.jpg", "original_name": "PXL_20261017_001951104.MP.jpg", "drive_id": "1sdl2ltZ2Jpz_TNo2ir7AExrJlhVsLUrn", "drive_link": "https://drive.google.com/file/d/1sdl2ltZ2Jpz_TNo2ir7AExrJlhVsLUrn/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID044", "seq_nr": 44, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID044.jpg", "original_name": "PXL_20261017_001956903.MP.jpg", "drive_id": "1SFBaeHeH7Agf1WlW3TW0EuHJQVg8-bRK", "drive_link": "https://drive.google.com/file/d/1SFBaeHeH7Agf1WlW3TW0EuHJQVg8-bRK/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-011", "title": "Valge kattega plaadiribad (partii 2)", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID045", "cover_short_title": "plaat_ID045.jpg", "photo_count": 3, "id_range": "ID045–ID047", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID045", "seq_nr": 45, "product_id": "PUIDUJAK-011", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID045.jpg", "original_name": "PXL_20261017_002052215.MP.jpg", "drive_id": "13wZYiiTs87GGL3uzXvBedB629QM4_rHC", "drive_link": "https://drive.google.com/file/d/13wZYiiTs87GGL3uzXvBedB629QM4_rHC/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID046", "seq_nr": 46, "product_id": "PUIDUJAK-011", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID046.jpg", "original_name": "PXL_20261017_002142489.MP.jpg", "drive_id": "1tmZMK5r-h0Y42oRPcYNFHuq1xjGW0F4r", "drive_link": "https://drive.google.com/file/d/1tmZMK5r-h0Y42oRPcYNFHuq1xjGW0F4r/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID047", "seq_nr": 47, "product_id": "PUIDUJAK-011", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID047.jpg", "original_name": "PXL_20261017_002145570.MP.jpg", "drive_id": "1t0H6apcn_n7Xq-B4RWj_labe7soUuVuE", "drive_link": "https://drive.google.com/file/d/1t0H6apcn_n7Xq-B4RWj_labe7soUuVuE/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-012", "title": "Valge kattega plaadiribad (partii 3)", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID048", "cover_short_title": "plaat_ID048.jpg", "photo_count": 6, "id_range": "ID048–ID053", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID048", "seq_nr": 48, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID048.jpg", "original_name": "PXL_20261017_002247005.jpg", "drive_id": "15WpPJ2wc-IdadULBU7dNvEqGtdAexL-S", "drive_link": "https://drive.google.com/file/d/15WpPJ2wc-IdadULBU7dNvEqGtdAexL-S/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID049", "seq_nr": 49, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID049.jpg", "original_name": "PXL_20261017_002326199.jpg", "drive_id": "1oLm-XgzdWpw5pNq1zc_DlAuOlsmtvZpb", "drive_link": "https://drive.google.com/file/d/1oLm-XgzdWpw5pNq1zc_DlAuOlsmtvZpb/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID050", "seq_nr": 50, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID050.jpg", "original_name": "PXL_20261017_002406854.jpg", "drive_id": "1Tbp6QUoEwG4PNvwtE5vBW1lR4EbLKy8b", "drive_link": "https://drive.google.com/file/d/1Tbp6QUoEwG4PNvwtE5vBW1lR4EbLKy8b/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID051", "seq_nr": 51, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID051.jpg", "original_name": "PXL_20261017_002429518.MP.jpg", "drive_id": "1YhSPoFHrR2LStVWyr_Eblvpke3wFXCk-", "drive_link": "https://drive.google.com/file/d/1YhSPoFHrR2LStVWyr_Eblvpke3wFXCk-/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID052", "seq_nr": 52, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID052.jpg", "original_name": "PXL_20261017_002436863.MP.jpg", "drive_id": "1b6l3L7EpoDvQaiUMS06xBYpI2E_NPHoj", "drive_link": "https://drive.google.com/file/d/1b6l3L7EpoDvQaiUMS06xBYpI2E_NPHoj/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID053", "seq_nr": 53, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID053.jpg", "original_name": "PXL_20261017_002517326.MP.jpg", "drive_id": "1Asa6zCHiAqIWN9DcuppXtpX47OMiQpa2", "drive_link": "https://drive.google.com/file/d/1Asa6zCHiAqIWN9DcuppXtpX47OMiQpa2/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-013", "title": "Valge kattega plaadiribad (partii 4)", "scale_ref": "Metalljoonlaud fotol", "primary_category": "plaat", "categories": ["plaat"], "cover_index": 0, "cover_photo_id": "ID054", "cover_short_title": "plaat_ID054.jpg", "photo_count": 3, "id_range": "ID054–ID056", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID054", "seq_nr": 54, "product_id": "PUIDUJAK-013", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID054.jpg", "original_name": "PXL_20261017_002559490.MP.jpg", "drive_id": "12X10OC2FDluwzCq3LMx2fHanu-B_cDQw", "drive_link": "https://drive.google.com/file/d/12X10OC2FDluwzCq3LMx2fHanu-B_cDQw/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID055", "seq_nr": 55, "product_id": "PUIDUJAK-013", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID055.jpg", "original_name": "PXL_20261017_002703786.MP.jpg", "drive_id": "1qopGeVKo8dZhBN5NVWEuPK5PnVazHtEs", "drive_link": "https://drive.google.com/file/d/1qopGeVKo8dZhBN5NVWEuPK5PnVazHtEs/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID056", "seq_nr": 56, "product_id": "PUIDUJAK-013", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID056.jpg", "original_name": "PXL_20261017_002710426.MP.jpg", "drive_id": "1NbyqgWPRvQ8SIJRtm_1tzanna57Oq_FA", "drive_link": "https://drive.google.com/file/d/1NbyqgWPRvQ8SIJRtm_1tzanna57Oq_FA/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-014", "title": "Liimpuidust / okaspuust paks klots", "scale_ref": "Metalljoonlaud fotol", "primary_category": "klots", "categories": ["klots"], "cover_index": 0, "cover_photo_id": "ID057", "cover_short_title": "klots_ID057.jpg", "photo_count": 3, "id_range": "ID057–ID059", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID057", "seq_nr": 57, "product_id": "PUIDUJAK-014", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID057.jpg", "original_name": "PXL_20261017_002842931.MP.jpg", "drive_id": "1mubVFvViqJ9YjULQmPkpWAmVa3Oks8yz", "drive_link": "https://drive.google.com/file/d/1mubVFvViqJ9YjULQmPkpWAmVa3Oks8yz/view?usp=drivesdk", "short_desc": "Liimpuidust/okaspuust klots", "detail_desc": "Kihtplaadist/liimpuidust plokk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID058", "seq_nr": 58, "product_id": "PUIDUJAK-014", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID058.jpg", "original_name": "PXL_20261017_002917090.MP.jpg", "drive_id": "1sp3KUP5nhG0cQI3Pm0u90DmqiG5AdSKu", "drive_link": "https://drive.google.com/file/d/1sp3KUP5nhG0cQI3Pm0u90DmqiG5AdSKu/view?usp=drivesdk", "short_desc": "Liimpuidust/okaspuust klots", "detail_desc": "Kihtplaadist/liimpuidust plokk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID059", "seq_nr": 59, "product_id": "PUIDUJAK-014", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID059.jpg", "original_name": "PXL_20261017_002947422.MP.jpg", "drive_id": "17XxMnDW9wCIXpIuUfZExiTK9ZKHRuIzw", "drive_link": "https://drive.google.com/file/d/17XxMnDW9wCIXpIuUfZExiTK9ZKHRuIzw/view?usp=drivesdk", "short_desc": "Liimpuidust/okaspuust klots", "detail_desc": "Kihtplaadist/liimpuidust plokk joonlauaga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-015", "title": "Kiilukujuline augu ja terava pinnuga puidujääk", "scale_ref": "Mõõtkava puudub fotol", "primary_category": "erikuju", "categories": ["erikuju"], "cover_index": 0, "cover_photo_id": "ID060", "cover_short_title": "erikuju_ID060.jpg", "photo_count": 4, "id_range": "ID060–ID063", "is_showcase": true, "showcase_tag": "Erikujuline jääk", "showcase_note": "Skulpturaalne kiilukujuline puidujääk läbiva ümmarguse augu ja kõrge terava pinnuga.", "photos": [{"id": "ID060", "seq_nr": 60, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID060.jpg", "original_name": "PXL_20261017_003051807.MP.jpg", "drive_id": "1j94Kj7Grrkrta9rn-WyEqOhc8tOeGWwk", "drive_link": "https://drive.google.com/file/d/1j94Kj7Grrkrta9rn-WyEqOhc8tOeGWwk/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)  (toode4.jpg)", "showcase_tag": "Erikujuline jääk", "showcase_note": "Skulpturaalne kiilukujuline puidujääk läbiva ümmarguse augu ja kõrge terava pinnuga."}, {"id": "ID061", "seq_nr": 61, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID061.jpg", "original_name": "PXL_20261017_003130025.MP.jpg", "drive_id": "1hLnF6N-pbPjGegKV-s1aLkLD4wWBmMY6", "drive_link": "https://drive.google.com/file/d/1hLnF6N-pbPjGegKV-s1aLkLD4wWBmMY6/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID062", "seq_nr": 62, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID062.jpg", "original_name": "PXL_20261017_003150571.jpg", "drive_id": "1XjKUV3rGNy2gEwzumrKkOUIscvkalnww", "drive_link": "https://drive.google.com/file/d/1XjKUV3rGNy2gEwzumrKkOUIscvkalnww/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID063", "seq_nr": 63, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID063.jpg", "original_name": "PXL_20261017_003210662.MP.jpg", "drive_id": "1DnDNWuvurMJao05R4NfftBPYUM2ugFUZ", "drive_link": "https://drive.google.com/file/d/1DnDNWuvurMJao05R4NfftBPYUM2ugFUZ/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-016", "title": "Kiilukujuline nikerdatud puidujääk (vaated)", "scale_ref": "Mõõtkava puudub fotol", "primary_category": "erikuju", "categories": ["erikuju"], "cover_index": 0, "cover_photo_id": "ID064", "cover_short_title": "erikuju_ID064.jpg", "photo_count": 3, "id_range": "ID064–ID066", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID064", "seq_nr": 64, "product_id": "PUIDUJAK-016", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID064.jpg", "original_name": "PXL_20261017_003237668.MP.jpg", "drive_id": "1nran3QH94rIxkKk1oXFZNSyINishzFXv", "drive_link": "https://drive.google.com/file/d/1nran3QH94rIxkKk1oXFZNSyINishzFXv/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID065", "seq_nr": 65, "product_id": "PUIDUJAK-016", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID065.jpg", "original_name": "PXL_20261017_003239848.MP.jpg", "drive_id": "1L0Bl5yeN_RNcOVSOJ4GaNi4fM-Fom0E3", "drive_link": "https://drive.google.com/file/d/1L0Bl5yeN_RNcOVSOJ4GaNi4fM-Fom0E3/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID066", "seq_nr": 66, "product_id": "PUIDUJAK-016", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID066.jpg", "original_name": "PXL_20261017_003318119.MP.jpg", "drive_id": "1ubSuycvT9rT6pGXIQRpBvq2736gCiNW2", "drive_link": "https://drive.google.com/file/d/1ubSuycvT9rT6pGXIQRpBvq2736gCiNW2/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-017", "title": "Kaarjas laserlõigatud kasevineeri jääk", "scale_ref": "2× 50 cm metalljoonlaud fotol", "primary_category": "erikuju", "categories": ["erikuju"], "cover_index": 0, "cover_photo_id": "ID067", "cover_short_title": "erikuju_ID067.jpg", "photo_count": 1, "id_range": "ID067", "is_showcase": true, "showcase_tag": "Erikujuline jääk", "showcase_note": "Laserlõikusest üle jäänud kahe poolkaarega kasevineeri jääk metalljoonlaua kõrval.", "photos": [{"id": "ID067", "seq_nr": 67, "product_id": "PUIDUJAK-017", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID067.jpg", "original_name": "PXL_20261017_003657727.MP.jpg", "drive_id": "1SgBlz3Q3GD8O4-KOfJ9DDK31bHyzNzb8", "drive_link": "https://drive.google.com/file/d/1SgBlz3Q3GD8O4-KOfJ9DDK31bHyzNzb8/view?usp=drivesdk", "short_desc": "Kaarjas laserlõigatud vineerijääk", "detail_desc": "Kaarjas dekoorpaneel kalasabamustriga  (toode5.jpg)", "showcase_tag": "Erikujuline jääk", "showcase_note": "Laserlõikusest üle jäänud kahe poolkaarega kasevineeri jääk metalljoonlaua kõrval."}]}, {"product_id": "PUIDUJAK-018", "title": "Õõnes tüverõngas ja tüvekettad", "scale_ref": "50 € kupüür fotol", "primary_category": "tuveoonsus", "categories": ["tuveoonsus", "ketas"], "cover_index": 0, "cover_photo_id": "ID068", "cover_short_title": "tuveoonsus_ID068.jpg", "photo_count": 3, "id_range": "ID068–ID070", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID068", "seq_nr": 68, "product_id": "PUIDUJAK-018", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID068.jpg", "original_name": "PXL_20261022_111557953.MP.jpg", "drive_id": "1T_RKQT3B0bxhsbqjuNOovDJlsizOmOmi", "drive_link": "https://drive.google.com/file/d/1T_RKQT3B0bxhsbqjuNOovDJlsizOmOmi/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID069", "seq_nr": 69, "product_id": "PUIDUJAK-018", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID069.jpg", "original_name": "PXL_20261022_111612896.jpg", "drive_id": "1BfhFxYT6CiGAyinshaTqPYUfOI61IPkD", "drive_link": "https://drive.google.com/file/d/1BfhFxYT6CiGAyinshaTqPYUfOI61IPkD/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID070", "seq_nr": 70, "product_id": "PUIDUJAK-018", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID070.jpg", "original_name": "PXL_20261022_111631653.jpg", "drive_id": "1aDM3IahSKdvD4OUBxQM64b-VkfZXc_eX", "drive_link": "https://drive.google.com/file/d/1aDM3IahSKdvD4OUBxQM64b-VkfZXc_eX/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-019", "title": "Vaigune C-kujuline tüveõõnsus ja oksaauguga koor", "scale_ref": "50 € kupüür fotol", "primary_category": "tuveoonsus", "categories": ["tuveoonsus", "ketas", "oksaauk"], "cover_index": 1, "cover_photo_id": "ID072", "cover_short_title": "tuveoonsus_ID072.jpg", "photo_count": 3, "id_range": "ID071–ID073", "is_showcase": true, "showcase_tag": "Kahjustusega / seenmuster", "showcase_note": "C-kujuline männipaku ristlõige sügava lõhe, mustade seenekirjadega (spalting) ja vaigulaikudega — ideaalne epoksiidvaiguga täitmiseks.", "photos": [{"id": "ID071", "seq_nr": 71, "product_id": "PUIDUJAK-019", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID071.jpg", "original_name": "PXL_20261022_111644419.MP.jpg", "drive_id": "1Xnw5flBiVtDdVI0h86ObbzJB7tON3KO3", "drive_link": "https://drive.google.com/file/d/1Xnw5flBiVtDdVI0h86ObbzJB7tON3KO3/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID072", "seq_nr": 72, "product_id": "PUIDUJAK-019", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID072.jpg", "original_name": "PXL_20261022_111651988.MP.jpg", "drive_id": "1Rwy9hhahtf75RYKEte9XoEwCsaWASvxj", "drive_link": "https://drive.google.com/file/d/1Rwy9hhahtf75RYKEte9XoEwCsaWASvxj/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Seest kõdunenud tüveketas lähivõttes  (toode6.jpg)", "showcase_tag": "Kahjustusega / seenmuster", "showcase_note": "C-kujuline männipaku ristlõige sügava lõhe, mustade seenekirjadega (spalting) ja vaigulaikudega — ideaalne epoksiidvaiguga täitmiseks."}, {"id": "ID073", "seq_nr": 73, "product_id": "PUIDUJAK-019", "category": "oksaauk", "moot_cm": "", "mooduklass": "", "short_title": "oksaauk_ID073.jpg", "original_name": "PXL_20261022_111701209.MP.jpg", "drive_id": "17ZnN7GQqH485qTbaGw1EcOeqSFz6p0P5", "drive_link": "https://drive.google.com/file/d/17ZnN7GQqH485qTbaGw1EcOeqSFz6p0P5/view?usp=drivesdk", "short_desc": "Oksaauguga korbatanud koor/tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Oksaauk", "showcase_note": "U-kujuline oksaauguga korbatanud koore- ja tüveosa."}]}, {"product_id": "PUIDUJAK-020", "title": "Südamekujuline tüveketas ja samblaga pahakorbad", "scale_ref": "Lähivõtted looduses", "primary_category": "ketas", "categories": ["ketas", "koor"], "cover_index": 0, "cover_photo_id": "ID074", "cover_short_title": "ketas_ID074.jpg", "photo_count": 4, "id_range": "ID074–ID077", "is_showcase": true, "showcase_tag": "Erikujuline / disain", "showcase_note": "Looduslikult südamekujuline tüve ristlõige kahe sümmeetrilise aastarõnga „silmaga“.", "photos": [{"id": "ID074", "seq_nr": 74, "product_id": "PUIDUJAK-020", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID074.jpg", "original_name": "PXL_20261022_111708610.jpg", "drive_id": "17jcFvlAA7Q4PMsVm6z6fI_HwVRGDv0Fi", "drive_link": "https://drive.google.com/file/d/17jcFvlAA7Q4PMsVm6z6fI_HwVRGDv0Fi/view?usp=drivesdk", "short_desc": "Südamekujuline tüveketas", "detail_desc": "Seest kõdunenud tüveketas lähivõttes", "showcase_tag": "Erikujuline / disain", "showcase_note": "Looduslikult südamekujuline tüve ristlõige kahe sümmeetrilise aastarõnga „silmaga“."}, {"id": "ID075", "seq_nr": 75, "product_id": "PUIDUJAK-020", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID075.jpg", "original_name": "PXL_20261022_111713422.jpg", "drive_id": "1UsBmvGW524XP1dYXup3__ctlITvII3Op", "drive_link": "https://drive.google.com/file/d/1UsBmvGW524XP1dYXup3__ctlITvII3Op/view?usp=drivesdk", "short_desc": "Südamekujuline tüveketas", "detail_desc": "Seest kõdunenud tüveketas lähivõttes", "showcase_tag": "", "showcase_note": ""}, {"id": "ID076", "seq_nr": 76, "product_id": "PUIDUJAK-020", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID076.jpg", "original_name": "PXL_20261022_111719024.jpg", "drive_id": "1CQfgEVirIoEqfeS5rZACOBX4wQKsibzn", "drive_link": "https://drive.google.com/file/d/1CQfgEVirIoEqfeS5rZACOBX4wQKsibzn/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Koor ja pahk", "showcase_note": "Sügavate vagude ja rohelise samblaga paks korbatanud pahatükk (terraariumi/dekoori materjal)."}, {"id": "ID077", "seq_nr": 77, "product_id": "PUIDUJAK-020", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID077.jpg", "original_name": "PXL_20261022_111724307.MP.jpg", "drive_id": "1p9SkiAkr5Ybk-k25dSSBIQ5ZmMoimBfm", "drive_link": "https://drive.google.com/file/d/1p9SkiAkr5Ybk-k25dSSBIQ5ZmMoimBfm/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-021", "title": "Sõõrikukujuline tüveõõnsus (rõngas) ja koor", "scale_ref": "50 € kupüür fotol", "primary_category": "tuveoonsus", "categories": ["tuveoonsus", "koor"], "cover_index": 2, "cover_photo_id": "ID080", "cover_short_title": "tuveoonsus_ID080.jpg", "photo_count": 4, "id_range": "ID078–ID081", "is_showcase": true, "showcase_tag": "Tüveõõnsus / rõngas", "showcase_note": "Sõõrikukujuline („O“-kujuline) seest tühi tüverõngas paksu krobelise korbaga.", "photos": [{"id": "ID078", "seq_nr": 78, "product_id": "PUIDUJAK-021", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID078.jpg", "original_name": "PXL_20261022_111947119.jpg", "drive_id": "1PQJ39C-W2DF8uaIhPVl_tJMPSwDQAni7", "drive_link": "https://drive.google.com/file/d/1PQJ39C-W2DF8uaIhPVl_tJMPSwDQAni7/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID079", "seq_nr": 79, "product_id": "PUIDUJAK-021", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID079.jpg", "original_name": "PXL_20261022_111955358.jpg", "drive_id": "1PgGBaRJ0-qyrfEfvdNDzXkyvvaWsgo_0", "drive_link": "https://drive.google.com/file/d/1PgGBaRJ0-qyrfEfvdNDzXkyvvaWsgo_0/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID080", "seq_nr": 80, "product_id": "PUIDUJAK-021", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID080.jpg", "original_name": "PXL_20261022_111958839.MP.jpg", "drive_id": "195bd85r_pMNOMVqRbpbyyAd5Ct0JjmJe", "drive_link": "https://drive.google.com/file/d/195bd85r_pMNOMVqRbpbyyAd5Ct0JjmJe/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks  (toode8.jpg)", "showcase_tag": "Tüveõõnsus / rõngas", "showcase_note": "Sõõrikukujuline („O“-kujuline) seest tühi tüverõngas paksu krobelise korbaga."}, {"id": "ID081", "seq_nr": 81, "product_id": "PUIDUJAK-021", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID081.jpg", "original_name": "PXL_20261022_112000730.jpg", "drive_id": "1pyO-EIUul8Lspmb6wbJ5eZEmU8BumL40", "drive_link": "https://drive.google.com/file/d/1pyO-EIUul8Lspmb6wbJ5eZEmU8BumL40/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-022", "title": "Käsnja õõnsusega plank ja pehkinud tüvekettad", "scale_ref": "50 € kupüür fotol", "primary_category": "tuveoonsus", "categories": ["tuveoonsus", "koor", "ketas"], "cover_index": 0, "cover_photo_id": "ID082", "cover_short_title": "tuveoonsus_ID082.jpg", "photo_count": 6, "id_range": "ID082–ID087", "is_showcase": true, "showcase_tag": "Kahjustusega puit", "showcase_note": "Paks puiduplank rusikasuuruse sisemise õõnsuse, tumeda veekahjustuse ja diagonaalse saesisselõikega.", "photos": [{"id": "ID082", "seq_nr": 82, "product_id": "PUIDUJAK-022", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID082.jpg", "original_name": "PXL_20261022_112046566.MP.jpg", "drive_id": "1tl2FqnWhEqm6u_HqindnN6CvQGBl6tbH", "drive_link": "https://drive.google.com/file/d/1tl2FqnWhEqm6u_HqindnN6CvQGBl6tbH/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "Kahjustusega puit", "showcase_note": "Paks puiduplank rusikasuuruse sisemise õõnsuse, tumeda veekahjustuse ja diagonaalse saesisselõikega."}, {"id": "ID083", "seq_nr": 83, "product_id": "PUIDUJAK-022", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID083.jpg", "original_name": "PXL_20261022_112115476.MP.jpg", "drive_id": "1DwWazJvyIGhYfjC6VPKUQuZKl9ZhALv0", "drive_link": "https://drive.google.com/file/d/1DwWazJvyIGhYfjC6VPKUQuZKl9ZhALv0/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Seest kõdunenud tüveketas lähivõttes  (toode7.jpg)", "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Suure mureda siseõõnsuse ja tumeda värvimuutusega dekoratiivne tüveketas."}, {"id": "ID084", "seq_nr": 84, "product_id": "PUIDUJAK-022", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID084.jpg", "original_name": "PXL_20261022_112122727.MP.jpg", "drive_id": "1PwdcN1j1tzo52J-euv571tuSkqUq_CCs", "drive_link": "https://drive.google.com/file/d/1PwdcN1j1tzo52J-euv571tuSkqUq_CCs/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID085", "seq_nr": 85, "product_id": "PUIDUJAK-022", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID085.jpg", "original_name": "PXL_20261022_112141590.jpg", "drive_id": "1eywgsYdKCSQ30dAcld6tWeS1Mi-U99Ls", "drive_link": "https://drive.google.com/file/d/1eywgsYdKCSQ30dAcld6tWeS1Mi-U99Ls/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID086", "seq_nr": 86, "product_id": "PUIDUJAK-022", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID086.jpg", "original_name": "PXL_20261022_112155172.jpg", "drive_id": "18Ni-cqPb9ssyhruT-mMfo_VI_zvZBhIT", "drive_link": "https://drive.google.com/file/d/18Ni-cqPb9ssyhruT-mMfo_VI_zvZBhIT/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID087", "seq_nr": 87, "product_id": "PUIDUJAK-022", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID087.jpg", "original_name": "PXL_20261022_112156821.jpg", "drive_id": "194jkDOiErAn543BhZCa9EneK--rAo6ch", "drive_link": "https://drive.google.com/file/d/194jkDOiErAn543BhZCa9EneK--rAo6ch/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-023", "title": "Käsnja siseõõnsusega tüvekettad", "scale_ref": "50 € kupüür fotol", "primary_category": "tuveoonsus", "categories": ["tuveoonsus"], "cover_index": 0, "cover_photo_id": "ID088", "cover_short_title": "tuveoonsus_ID088.jpg", "photo_count": 3, "id_range": "ID088–ID090", "is_showcase": true, "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Pealtvaates tüveketas, mille keskel on tume käsnja servaga pehkinud õõnsus (50 € mõõtkavaks).", "photos": [{"id": "ID088", "seq_nr": 88, "product_id": "PUIDUJAK-023", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID088.jpg", "original_name": "PXL_20261022_112222427.jpg", "drive_id": "1TKtiL0Oi53NZCdlaS8dgDTxyK2iNzYxP", "drive_link": "https://drive.google.com/file/d/1TKtiL0Oi53NZCdlaS8dgDTxyK2iNzYxP/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Pealtvaates tüveketas, mille keskel on tume käsnja servaga pehkinud õõnsus (50 € mõõtkavaks)."}, {"id": "ID089", "seq_nr": 89, "product_id": "PUIDUJAK-023", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID089.jpg", "original_name": "PXL_20261022_112224431.jpg", "drive_id": "18qRGlCto7bBmVjPgQPUnlCgWt9G5Mo0g", "drive_link": "https://drive.google.com/file/d/18qRGlCto7bBmVjPgQPUnlCgWt9G5Mo0g/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID090", "seq_nr": 90, "product_id": "PUIDUJAK-023", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID090.jpg", "original_name": "PXL_20261022_112230966.MP.jpg", "drive_id": "1KkeOyM-TFRO-7mdJZVi2zmBRd9SLBy_m", "drive_link": "https://drive.google.com/file/d/1KkeOyM-TFRO-7mdJZVi2zmBRd9SLBy_m/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-024", "title": "Oksaaugu ja oksakraega paksud männikoore tükid", "scale_ref": "50 € kupüür fotol", "primary_category": "oksaauk", "categories": ["oksaauk", "oksakrae", "koor"], "cover_index": 0, "cover_photo_id": "ID091", "cover_short_title": "oksaauk_ID091.jpg", "photo_count": 4, "id_range": "ID091–ID094", "is_showcase": true, "showcase_tag": "Oksaauk", "showcase_note": "Suure loodusliku ovaalse oksaauguga vana korbatanud kooretükk.", "photos": [{"id": "ID091", "seq_nr": 91, "product_id": "PUIDUJAK-024", "category": "oksaauk", "moot_cm": "", "mooduklass": "", "short_title": "oksaauk_ID091.jpg", "original_name": "PXL_20261022_112239837.jpg", "drive_id": "19qEorxtVmWOVUOyTpKFate1dKgbYkM-D", "drive_link": "https://drive.google.com/file/d/19qEorxtVmWOVUOyTpKFate1dKgbYkM-D/view?usp=drivesdk", "short_desc": "Oksaauguga korbatanud koor/tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Oksaauk", "showcase_note": "Suure loodusliku ovaalse oksaauguga vana korbatanud kooretükk."}, {"id": "ID092", "seq_nr": 92, "product_id": "PUIDUJAK-024", "category": "oksakrae", "moot_cm": "", "mooduklass": "", "short_title": "oksakrae_ID092.jpg", "original_name": "PXL_20261022_112247459.MP.jpg", "drive_id": "1jR2C_2aHZzF5EwDkumK2r-3DutK-9eOG", "drive_link": "https://drive.google.com/file/d/1jR2C_2aHZzF5EwDkumK2r-3DutK-9eOG/view?usp=drivesdk", "short_desc": "Oksakrae / okslik tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Oksakrae", "showcase_note": "Selge ümara oksakraega paks korbatanud tüve- ja kooretükk."}, {"id": "ID093", "seq_nr": 93, "product_id": "PUIDUJAK-024", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID093.jpg", "original_name": "PXL_20261022_112303604.jpg", "drive_id": "1UZKxlWDpQogRcVDktiKlUV2_dfL521Nx", "drive_link": "https://drive.google.com/file/d/1UZKxlWDpQogRcVDktiKlUV2_dfL521Nx/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID094", "seq_nr": 94, "product_id": "PUIDUJAK-024", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID094.jpg", "original_name": "PXL_20261022_112333021.jpg", "drive_id": "10Pq0qLUbyl0bb8lpilJrPIVXi6J7h7YK", "drive_link": "https://drive.google.com/file/d/10Pq0qLUbyl0bb8lpilJrPIVXi6J7h7YK/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-025", "title": "Oksakraedega tüvejupp ja käsnjalt pehkinud tüveõõnsus", "scale_ref": "Kollane mõõdulint fotol", "primary_category": "tuveoonsus", "categories": ["tuveoonsus", "oksakrae"], "cover_index": 1, "cover_photo_id": "ID096", "cover_short_title": "tuveoonsus_ID096.jpg", "photo_count": 3, "id_range": "ID095–ID097", "is_showcase": true, "showcase_tag": "Oksakrae", "showcase_note": "Oksakraedega okslik tüvejupp kollase mõõdulindi kõrval.", "photos": [{"id": "ID095", "seq_nr": 95, "product_id": "PUIDUJAK-025", "category": "oksakrae", "moot_cm": "", "mooduklass": "", "short_title": "oksakrae_ID095.jpg", "original_name": "PXL_20261022_112410816.MP.jpg", "drive_id": "1cnre0-WUfaWAZxELR-VvxzfknDBO8FmO", "drive_link": "https://drive.google.com/file/d/1cnre0-WUfaWAZxELR-VvxzfknDBO8FmO/view?usp=drivesdk", "short_desc": "Oksakrae / okslik tüveosa", "detail_desc": "Juurikas/oksad mõõdulindiga", "showcase_tag": "Oksakrae", "showcase_note": "Oksakraedega okslik tüvejupp kollase mõõdulindi kõrval."}, {"id": "ID096", "seq_nr": 96, "product_id": "PUIDUJAK-025", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID096.jpg", "original_name": "PXL_20261022_112416697.jpg", "drive_id": "1LzXWpZE8UezGu4-hQ-ZUO7M4_WQdlCGT", "drive_link": "https://drive.google.com/file/d/1LzXWpZE8UezGu4-hQ-ZUO7M4_WQdlCGT/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Parim näide seest pehmeks ja muredaks pehkinud õõnsusega okslikust tüvetükist koos värske saelõikega."}, {"id": "ID097", "seq_nr": 97, "product_id": "PUIDUJAK-025", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID097.jpg", "original_name": "PXL_20261022_112420611.jpg", "drive_id": "1U1GY4yKnbxOcoTbxxA31wyUaHcK0osBe", "drive_link": "https://drive.google.com/file/d/1U1GY4yKnbxOcoTbxxA31wyUaHcK0osBe/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-026", "title": "Okaspuupalgid õues", "scale_ref": "50 € kupüür / silt fotol", "primary_category": "palk", "categories": ["palk"], "cover_index": 0, "cover_photo_id": "ID098", "cover_short_title": "palk_ID098.jpg", "photo_count": 2, "id_range": "ID098–ID099", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID098", "seq_nr": 98, "product_id": "PUIDUJAK-026", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID098.jpg", "original_name": "PXL_20261022_112935025.MP.jpg", "drive_id": "1TgFDwEVkS-QEqKnUKTh_UczmWUzy0yoU", "drive_link": "https://drive.google.com/file/d/1TgFDwEVkS-QEqKnUKTh_UczmWUzy0yoU/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID099", "seq_nr": 99, "product_id": "PUIDUJAK-026", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID099.jpg", "original_name": "PXL_20261022_112944065.MP.jpg", "drive_id": "14pVDSwzhuz6zylk2D6fHldqiGIMnvsB1", "drive_link": "https://drive.google.com/file/d/14pVDSwzhuz6zylk2D6fHldqiGIMnvsB1/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-027", "title": "Suured ilmastikukindlad juurekaelaga kännud", "scale_ref": "Õues murul", "primary_category": "palk", "categories": ["palk"], "cover_index": 0, "cover_photo_id": "ID100", "cover_short_title": "palk_ID100.jpg", "photo_count": 4, "id_range": "ID100–ID103", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID100", "seq_nr": 100, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID100.jpg", "original_name": "PXL_20261022_113251943.MP.jpg", "drive_id": "1KoJbFAk53tDdvZTdwImlUK2MGld-IB9E", "drive_link": "https://drive.google.com/file/d/1KoJbFAk53tDdvZTdwImlUK2MGld-IB9E/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID101", "seq_nr": 101, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID101.jpg", "original_name": "PXL_20261022_113340276.MP.jpg", "drive_id": "1ZUJJHpUwiAmHiRmqnr3fnVcpj-Pb9vdC", "drive_link": "https://drive.google.com/file/d/1ZUJJHpUwiAmHiRmqnr3fnVcpj-Pb9vdC/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID102", "seq_nr": 102, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID102.jpg", "original_name": "PXL_20261022_113347742.jpg", "drive_id": "1PeIRUotjlmIsq8QkYk78VUdQ1AmP6fxC", "drive_link": "https://drive.google.com/file/d/1PeIRUotjlmIsq8QkYk78VUdQ1AmP6fxC/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID103", "seq_nr": 103, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID103.jpg", "original_name": "PXL_20261022_113356831.jpg", "drive_id": "1scQhmaHiOYDW6X7BiN_-zXwqj28p82sP", "drive_link": "https://drive.google.com/file/d/1scQhmaHiOYDW6X7BiN_-zXwqj28p82sP/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-028", "title": "Juurekaelaga kännud ja tüvepakud õues", "scale_ref": "Õues murul", "primary_category": "palk", "categories": ["palk"], "cover_index": 0, "cover_photo_id": "ID104", "cover_short_title": "palk_ID104.jpg", "photo_count": 3, "id_range": "ID104–ID106", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID104", "seq_nr": 104, "product_id": "PUIDUJAK-028", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID104.jpg", "original_name": "PXL_20261022_113416638.jpg", "drive_id": "1q20NqI5KAAa9G4v5AMlhR6xpJ0GP-VwB", "drive_link": "https://drive.google.com/file/d/1q20NqI5KAAa9G4v5AMlhR6xpJ0GP-VwB/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID105", "seq_nr": 105, "product_id": "PUIDUJAK-028", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID105.jpg", "original_name": "PXL_20261022_113420239.jpg", "drive_id": "19qvFSutLd3qyO6wemg3tBd-qi3h4QWGS", "drive_link": "https://drive.google.com/file/d/19qvFSutLd3qyO6wemg3tBd-qi3h4QWGS/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID106", "seq_nr": 106, "product_id": "PUIDUJAK-028", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID106.jpg", "original_name": "PXL_20261022_113446910.jpg", "drive_id": "1QDGpucDXS8alidmbbqfW6pwgtF2nqz53", "drive_link": "https://drive.google.com/file/d/1QDGpucDXS8alidmbbqfW6pwgtF2nqz53/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-029", "title": "Kasutatud puitalused kivisillutisel ja murul", "scale_ref": "Standardne kaubaalus", "primary_category": "alus", "categories": ["alus"], "cover_index": 0, "cover_photo_id": "ID107", "cover_short_title": "alus_ID107.jpg", "photo_count": 3, "id_range": "ID107–ID109", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID107", "seq_nr": 107, "product_id": "PUIDUJAK-029", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID107.jpg", "original_name": "PXL_20261022_113716648.MP.jpg", "drive_id": "1ymgvKesPmxY269ynx3SOWphvOFG7j1lO", "drive_link": "https://drive.google.com/file/d/1ymgvKesPmxY269ynx3SOWphvOFG7j1lO/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitalused kivisillutisel", "showcase_tag": "", "showcase_note": ""}, {"id": "ID108", "seq_nr": 108, "product_id": "PUIDUJAK-029", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID108.jpg", "original_name": "PXL_20261022_113720694.MP.jpg", "drive_id": "1XqHIdA4G6srI3wYEDDAwVUmN_Wes3NWT", "drive_link": "https://drive.google.com/file/d/1XqHIdA4G6srI3wYEDDAwVUmN_Wes3NWT/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitalused kivisillutisel", "showcase_tag": "", "showcase_note": ""}, {"id": "ID109", "seq_nr": 109, "product_id": "PUIDUJAK-029", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID109.jpg", "original_name": "PXL_20261022_113732679.MP.jpg", "drive_id": "1ZCjuTNI0VIiFRTTUvE6Gk5hvYo3k-iCU", "drive_link": "https://drive.google.com/file/d/1ZCjuTNI0VIiFRTTUvE6Gk5hvYo3k-iCU/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitalused murul, taamal sõiduk", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-030", "title": "Palgid murul", "scale_ref": "Õues murul", "primary_category": "palk", "categories": ["palk"], "cover_index": 0, "cover_photo_id": "ID110", "cover_short_title": "palk_ID110.jpg", "photo_count": 4, "id_range": "ID110–ID113", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID110", "seq_nr": 110, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID110.jpg", "original_name": "PXL_20261022_113818822.jpg", "drive_id": "1C37CtWytcPUMSSxejtsPryQDwkWiyeQO", "drive_link": "https://drive.google.com/file/d/1C37CtWytcPUMSSxejtsPryQDwkWiyeQO/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palk murul", "showcase_tag": "", "showcase_note": ""}, {"id": "ID111", "seq_nr": 111, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID111.jpg", "original_name": "PXL_20261022_113828377.MP.jpg", "drive_id": "1s0yL8w_ofj8BX9XBgToMVXFg81dhNCwr", "drive_link": "https://drive.google.com/file/d/1s0yL8w_ofj8BX9XBgToMVXFg81dhNCwr/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palk murul", "showcase_tag": "", "showcase_note": ""}, {"id": "ID112", "seq_nr": 112, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID112.jpg", "original_name": "PXL_20261022_113838714.MP.jpg", "drive_id": "1b7iyqSOiwsR0QZT4vrf55P09XU5m8jpR", "drive_link": "https://drive.google.com/file/d/1b7iyqSOiwsR0QZT4vrf55P09XU5m8jpR/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID113", "seq_nr": 113, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID113.jpg", "original_name": "PXL_20261022_113851080.jpg", "drive_id": "1mVuUyYo-GvxnDbo5yh5NtLAqXroGkRtL", "drive_link": "https://drive.google.com/file/d/1mVuUyYo-GvxnDbo5yh5NtLAqXroGkRtL/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-031", "title": "Kasutatud puitaluste virnad (partii A)", "scale_ref": "Standardne kaubaalus", "primary_category": "alus", "categories": ["alus"], "cover_index": 0, "cover_photo_id": "ID114", "cover_short_title": "alus_ID114.jpg", "photo_count": 4, "id_range": "ID114–ID117", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID114", "seq_nr": 114, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID114.jpg", "original_name": "PXL_20261022_113914805.MP.jpg", "drive_id": "1UTyervBYLL4bl55srj86BR080ac8DnWC", "drive_link": "https://drive.google.com/file/d/1UTyervBYLL4bl55srj86BR080ac8DnWC/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad  (toode9.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID115", "seq_nr": 115, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID115.jpg", "original_name": "PXL_20261022_113921404.MP.jpg", "drive_id": "1LPO9e1xoEsjrctgLiWRFWge6ZrM5ZXJ_", "drive_link": "https://drive.google.com/file/d/1LPO9e1xoEsjrctgLiWRFWge6ZrM5ZXJ_/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID116", "seq_nr": 116, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID116.jpg", "original_name": "PXL_20261022_113929667.jpg", "drive_id": "16qhyATm7R-SBq7iLaD4L2Hd_lPaT83mI", "drive_link": "https://drive.google.com/file/d/16qhyATm7R-SBq7iLaD4L2Hd_lPaT83mI/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID117", "seq_nr": 117, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID117.jpg", "original_name": "PXL_20261022_113938147.MP.jpg", "drive_id": "1V-SRoVLhH8gaq_zBMRuAqFDGdALKsb2R", "drive_link": "https://drive.google.com/file/d/1V-SRoVLhH8gaq_zBMRuAqFDGdALKsb2R/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-032", "title": "Kasutatud puitaluste virnad (partii B)", "scale_ref": "Standardne kaubaalus", "primary_category": "alus", "categories": ["alus"], "cover_index": 0, "cover_photo_id": "ID118", "cover_short_title": "alus_ID118.jpg", "photo_count": 3, "id_range": "ID118–ID120", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID118", "seq_nr": 118, "product_id": "PUIDUJAK-032", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID118.jpg", "original_name": "PXL_20261022_113947961.MP.jpg", "drive_id": "1wcWEz3PInQfIHAcBySFc5T2FE_dgF-QU", "drive_link": "https://drive.google.com/file/d/1wcWEz3PInQfIHAcBySFc5T2FE_dgF-QU/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID119", "seq_nr": 119, "product_id": "PUIDUJAK-032", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID119.jpg", "original_name": "PXL_20261022_113954829.jpg", "drive_id": "1Ui9yIhg5RDMqNcF6f1lE1v_9Y1lVi64K", "drive_link": "https://drive.google.com/file/d/1Ui9yIhg5RDMqNcF6f1lE1v_9Y1lVi64K/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID120", "seq_nr": 120, "product_id": "PUIDUJAK-032", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID120.jpg", "original_name": "PXL_20261022_114022430.MP.jpg", "drive_id": "1rc-q9hYLzAnezxnPAF6WsJQQYsJVp_RS", "drive_link": "https://drive.google.com/file/d/1rc-q9hYLzAnezxnPAF6WsJQQYsJVp_RS/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-033", "title": "Pikad okaspuulauad", "scale_ref": "Mõõdulint fotol", "primary_category": "laud", "categories": ["laud"], "cover_index": 0, "cover_photo_id": "ID121", "cover_short_title": "laud_ID121.jpg", "photo_count": 4, "id_range": "ID121–ID124", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID121", "seq_nr": 121, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID121.jpg", "original_name": "PXL_20261022_114120383.MP.jpg", "drive_id": "10z-K2Yn7oIsoH9IZMN2LDANhIKM1-9Cb", "drive_link": "https://drive.google.com/file/d/10z-K2Yn7oIsoH9IZMN2LDANhIKM1-9Cb/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Kaks pikka okaspuulauda  (toode10.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID122", "seq_nr": 122, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID122.jpg", "original_name": "PXL_20261022_114202113.MP.jpg", "drive_id": "1bv4QzD-L43Qs3MNN9KUMv-7A5JVT2ILw", "drive_link": "https://drive.google.com/file/d/1bv4QzD-L43Qs3MNN9KUMv-7A5JVT2ILw/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laua alumine osa mõõdulindiga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID123", "seq_nr": 123, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID123.jpg", "original_name": "PXL_20261022_114202205.jpg", "drive_id": "1APopxbRvsDC-vRY5-C-wJQAP95BDiPSv", "drive_link": "https://drive.google.com/file/d/1APopxbRvsDC-vRY5-C-wJQAP95BDiPSv/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laua alumine osa mõõdulindiga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID124", "seq_nr": 124, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID124.jpg", "original_name": "PXL_20261022_114224088.MP.jpg", "drive_id": "1yIu2JzjxK-jxTeq4JScViAyzC7GMBF8l", "drive_link": "https://drive.google.com/file/d/1yIu2JzjxK-jxTeq4JScViAyzC7GMBF8l/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laua alumine osa mõõdulindiga", "showcase_tag": "", "showcase_note": ""}]}, {"product_id": "PUIDUJAK-034", "title": "Laudade virn konteineri ääres", "scale_ref": "Õues konteineri kõrval", "primary_category": "laud", "categories": ["laud"], "cover_index": 0, "cover_photo_id": "ID125", "cover_short_title": "laud_ID125.jpg", "photo_count": 1, "id_range": "ID125", "is_showcase": false, "showcase_tag": "", "showcase_note": "", "photos": [{"id": "ID125", "seq_nr": 125, "product_id": "PUIDUJAK-034", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID125.jpg", "original_name": "PXL_20261022_114731157.MP.jpg", "drive_id": "15IJjEAKdLYglJuxL73YYKHOnl1lT76-3", "drive_link": "https://drive.google.com/file/d/15IJjEAKdLYglJuxL73YYKHOnl1lT76-3/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laudade virn konteineri ääres", "showcase_tag": "", "showcase_note": ""}]}], "photos": [{"id": "ID001", "seq_nr": 1, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID001.jpg", "original_name": "PXL_20261016_210227326.jpg", "drive_id": "1AYFXEnMlzx1bnkP2yygQGql0iDVuGrGK", "drive_link": "https://drive.google.com/file/d/1AYFXEnMlzx1bnkP2yygQGql0iDVuGrGK/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Pinnakattega plaaditükk laual (töökoja taust)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID002", "seq_nr": 2, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID002.jpg", "original_name": "PXL_20261016_210235641.jpg", "drive_id": "19LIObLk2fULyvSf9-7D0GfjWEMOPspC1", "drive_link": "https://drive.google.com/file/d/19LIObLk2fULyvSf9-7D0GfjWEMOPspC1/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Pinnakattega plaaditükk laual (töökoja taust)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID003", "seq_nr": 3, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID003.jpg", "original_name": "PXL_20261016_210412601.jpg", "drive_id": "1glxFtcoweQWDJD7S1WB6_B687YbfYw6o", "drive_link": "https://drive.google.com/file/d/1glxFtcoweQWDJD7S1WB6_B687YbfYw6o/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Hele plaaditükk tumedal pinnal", "showcase_tag": "", "showcase_note": ""}, {"id": "ID004", "seq_nr": 4, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID004.jpg", "original_name": "PXL_20261016_210424950.jpg", "drive_id": "1LfVBzj0ge9LX_ejWYv9b-lDGFohu2UQ7", "drive_link": "https://drive.google.com/file/d/1LfVBzj0ge9LX_ejWYv9b-lDGFohu2UQ7/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Pinnakattega plaaditükk laual (töökoja taust)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID005", "seq_nr": 5, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID005.jpg", "original_name": "PXL_20261016_210439650.jpg", "drive_id": "1OhyLTYVPptE6k9bULSecKujwaZEKjX0W", "drive_link": "https://drive.google.com/file/d/1OhyLTYVPptE6k9bULSecKujwaZEKjX0W/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Heleroheline plaaditükk laual", "showcase_tag": "", "showcase_note": ""}, {"id": "ID006", "seq_nr": 6, "product_id": "PUIDUJAK-001", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID006.jpg", "original_name": "PXL_20261016_210451707.jpg", "drive_id": "1gqnAkw7BlAwij3W-XxWFoABuAoQmg3um", "drive_link": "https://drive.google.com/file/d/1gqnAkw7BlAwij3W-XxWFoABuAoQmg3um/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Kitsas plaadiriba laual", "showcase_tag": "", "showcase_note": ""}, {"id": "ID007", "seq_nr": 7, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID007.jpg", "original_name": "PXL_20261016_235720480.jpg", "drive_id": "1Na1Qtr9Ieef-VKv8QwmogH4U481StwoI", "drive_link": "https://drive.google.com/file/d/1Na1Qtr9Ieef-VKv8QwmogH4U481StwoI/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID008", "seq_nr": 8, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID008.jpg", "original_name": "PXL_20261016_235739682.jpg", "drive_id": "1eLoagdw4nDSD6IDyth2vEfVUyqxWB-Em", "drive_link": "https://drive.google.com/file/d/1eLoagdw4nDSD6IDyth2vEfVUyqxWB-Em/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID009", "seq_nr": 9, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID009.jpg", "original_name": "PXL_20261016_235747655.jpg", "drive_id": "16eKk8Zvt-Z3Tm1kRWsbDg-TrAOEBdjoi", "drive_link": "https://drive.google.com/file/d/16eKk8Zvt-Z3Tm1kRWsbDg-TrAOEBdjoi/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID010", "seq_nr": 10, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID010.jpg", "original_name": "PXL_20261016_235758389.jpg", "drive_id": "1XuJk7VecdnIp4_nZW1FaITGHYFWyXZ9C", "drive_link": "https://drive.google.com/file/d/1XuJk7VecdnIp4_nZW1FaITGHYFWyXZ9C/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID011", "seq_nr": 11, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID011.jpg", "original_name": "PXL_20261016_235831601.jpg", "drive_id": "1r6hD0-2naXwIaf9HNFKAIqeub3U-nfjs", "drive_link": "https://drive.google.com/file/d/1r6hD0-2naXwIaf9HNFKAIqeub3U-nfjs/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID012", "seq_nr": 12, "product_id": "PUIDUJAK-002", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID012.jpg", "original_name": "PXL_20261016_235859973.jpg", "drive_id": "1oIPWhbjnsZvDxEmfRpNTwFwHg_1u7nIc", "drive_link": "https://drive.google.com/file/d/1oIPWhbjnsZvDxEmfRpNTwFwHg_1u7nIc/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID013", "seq_nr": 13, "product_id": "PUIDUJAK-003", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID013.jpg", "original_name": "PXL_20261017_000001174.jpg", "drive_id": "1V0gloqF-zp3I9j6ldoWPKWJ-V4S-rjzX", "drive_link": "https://drive.google.com/file/d/1V0gloqF-zp3I9j6ldoWPKWJ-V4S-rjzX/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID014", "seq_nr": 14, "product_id": "PUIDUJAK-003", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID014.jpg", "original_name": "PXL_20261017_000009315.MP.jpg", "drive_id": "1r2T2_qKiF7hpnp3UgsnP_eaJ_NveoJT_", "drive_link": "https://drive.google.com/file/d/1r2T2_qKiF7hpnp3UgsnP_eaJ_NveoJT_/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID015", "seq_nr": 15, "product_id": "PUIDUJAK-003", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID015.jpg", "original_name": "PXL_20261017_000012135.MP.jpg", "drive_id": "1gTp0oEV7IEJlAXQtCV7FiOwkxAMeUciP", "drive_link": "https://drive.google.com/file/d/1gTp0oEV7IEJlAXQtCV7FiOwkxAMeUciP/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID016", "seq_nr": 16, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID016.jpg", "original_name": "PXL_20261017_000125691.MP.jpg", "drive_id": "1CC-9HKbv9M58pJQP1LLR2_PuwOkS4TVx", "drive_link": "https://drive.google.com/file/d/1CC-9HKbv9M58pJQP1LLR2_PuwOkS4TVx/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga  (toode1.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID017", "seq_nr": 17, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID017.jpg", "original_name": "PXL_20261017_000234730.MP.jpg", "drive_id": "1ZMLfxglQT9V7NQ2Bg5JV7ToRxUA16Aeg", "drive_link": "https://drive.google.com/file/d/1ZMLfxglQT9V7NQ2Bg5JV7ToRxUA16Aeg/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID018", "seq_nr": 18, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID018.jpg", "original_name": "PXL_20261017_000243025.MP.jpg", "drive_id": "1BOqhCMrBLMv8t866b2Cv3Ti6jztRAxgo", "drive_link": "https://drive.google.com/file/d/1BOqhCMrBLMv8t866b2Cv3Ti6jztRAxgo/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID019", "seq_nr": 19, "product_id": "PUIDUJAK-004", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID019.jpg", "original_name": "PXL_20261017_000331902.MP.jpg", "drive_id": "1I2MImlwGgwRTv4BZNSeBASyHQEBxEzlA", "drive_link": "https://drive.google.com/file/d/1I2MImlwGgwRTv4BZNSeBASyHQEBxEzlA/view?usp=drivesdk", "short_desc": "Valge/pinnakattega plaat", "detail_desc": "Valge kattega sandwich-plaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID020", "seq_nr": 20, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID020.jpg", "original_name": "PXL_20261017_000419072.MP.jpg", "drive_id": "1hhs5VtBF0XDmBmnwarMrPaKfY0GtDguB", "drive_link": "https://drive.google.com/file/d/1hhs5VtBF0XDmBmnwarMrPaKfY0GtDguB/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Õhuke tumedam spoonitükk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID021", "seq_nr": 21, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID021.jpg", "original_name": "PXL_20261017_000502750.MP.jpg", "drive_id": "1pWWJLvG61Cj1KB5wtN_qJfOIcUMR67GR", "drive_link": "https://drive.google.com/file/d/1pWWJLvG61Cj1KB5wtN_qJfOIcUMR67GR/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga  (toode2.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID022", "seq_nr": 22, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID022.jpg", "original_name": "PXL_20261017_000506925.MP.jpg", "drive_id": "1zC446Qz-A1zDl2U4vciusyk93Aky9cGZ", "drive_link": "https://drive.google.com/file/d/1zC446Qz-A1zDl2U4vciusyk93Aky9cGZ/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID023", "seq_nr": 23, "product_id": "PUIDUJAK-005", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID023.jpg", "original_name": "PXL_20261017_000614335.MP.jpg", "drive_id": "1W6dE8OouzREGHYEmRAvu-_VCpMOhSfgL", "drive_link": "https://drive.google.com/file/d/1W6dE8OouzREGHYEmRAvu-_VCpMOhSfgL/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID024", "seq_nr": 24, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID024.jpg", "original_name": "PXL_20261017_000746935.MP.jpg", "drive_id": "14ZBWonoRVu-fEi_PKQYCMgVGt2H7Onco", "drive_link": "https://drive.google.com/file/d/14ZBWonoRVu-fEi_PKQYCMgVGt2H7Onco/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID025", "seq_nr": 25, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID025.jpg", "original_name": "PXL_20261017_000824696.MP.jpg", "drive_id": "1uC7u-dZ1aCx0TRn1dznywUPB4NSm_3r2", "drive_link": "https://drive.google.com/file/d/1uC7u-dZ1aCx0TRn1dznywUPB4NSm_3r2/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID026", "seq_nr": 26, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID026.jpg", "original_name": "PXL_20261017_000829727.MP.jpg", "drive_id": "1xYd_2MM-HqOfNdH4bxJMEvh6cH1gxqru", "drive_link": "https://drive.google.com/file/d/1xYd_2MM-HqOfNdH4bxJMEvh6cH1gxqru/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID027", "seq_nr": 27, "product_id": "PUIDUJAK-006", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID027.jpg", "original_name": "PXL_20261017_000840480.MP.jpg", "drive_id": "1JbLKEeitEo4Gukp5FDZr9kUgKFDrl14T", "drive_link": "https://drive.google.com/file/d/1JbLKEeitEo4Gukp5FDZr9kUgKFDrl14T/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID028", "seq_nr": 28, "product_id": "PUIDUJAK-007", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID028.jpg", "original_name": "PXL_20261017_000955939.MP.jpg", "drive_id": "1jI1lQNSRfv5biF1tqmG4OyO7camfp9To", "drive_link": "https://drive.google.com/file/d/1jI1lQNSRfv5biF1tqmG4OyO7camfp9To/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele õhuke lauake joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID029", "seq_nr": 29, "product_id": "PUIDUJAK-007", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID029.jpg", "original_name": "PXL_20261017_001058790.MP.jpg", "drive_id": "1LW3BUGDW0b2As7p5oqtJ-vf5kgxe-6Vd", "drive_link": "https://drive.google.com/file/d/1LW3BUGDW0b2As7p5oqtJ-vf5kgxe-6Vd/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Joonlaua lähivõte puidu peal", "showcase_tag": "", "showcase_note": ""}, {"id": "ID030", "seq_nr": 30, "product_id": "PUIDUJAK-007", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID030.jpg", "original_name": "PXL_20261017_001106301.MP.jpg", "drive_id": "1qlIMMMWFN4k7OepR6ITkJZLsvrzpgjMo", "drive_link": "https://drive.google.com/file/d/1qlIMMMWFN4k7OepR6ITkJZLsvrzpgjMo/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Kitsas hele liist joonlaua kõrval", "showcase_tag": "", "showcase_note": ""}, {"id": "ID031", "seq_nr": 31, "product_id": "PUIDUJAK-007", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID031.jpg", "original_name": "PXL_20261017_001138417.MP.jpg", "drive_id": "1tzcdn6nfsALbuZ61cvg5UEVfYSXpRokA", "drive_link": "https://drive.google.com/file/d/1tzcdn6nfsALbuZ61cvg5UEVfYSXpRokA/view?usp=drivesdk", "short_desc": "Vineeri/kihtplaadi serv", "detail_desc": "Vineeri/kihtplaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID032", "seq_nr": 32, "product_id": "PUIDUJAK-007", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID032.jpg", "original_name": "PXL_20261017_001209039.MP.jpg", "drive_id": "1pGDptTJELkSFP41iXKSpEMULQ51_Q5Hi", "drive_link": "https://drive.google.com/file/d/1pGDptTJELkSFP41iXKSpEMULQ51_Q5Hi/view?usp=drivesdk", "short_desc": "Vineeri/kihtplaadi serv", "detail_desc": "Vineeri/kihtplaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID033", "seq_nr": 33, "product_id": "PUIDUJAK-008", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID033.jpg", "original_name": "PXL_20261017_001314347.MP.jpg", "drive_id": "1lBPrdHIZp44ra4j-7Cw_ZBwXDJWoA6Lx", "drive_link": "https://drive.google.com/file/d/1lBPrdHIZp44ra4j-7Cw_ZBwXDJWoA6Lx/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele puitdetail joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID034", "seq_nr": 34, "product_id": "PUIDUJAK-008", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID034.jpg", "original_name": "PXL_20261017_001417123.MP.jpg", "drive_id": "1T6e6Wufu9m6AS9K4YrSppEzn76En5T9s", "drive_link": "https://drive.google.com/file/d/1T6e6Wufu9m6AS9K4YrSppEzn76En5T9s/view?usp=drivesdk", "short_desc": "Hele laud/liist või spoon", "detail_desc": "Hele puitdetail joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID035", "seq_nr": 35, "product_id": "PUIDUJAK-008", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID035.jpg", "original_name": "PXL_20261017_001528264.MP.jpg", "drive_id": "1tuLPIDvj8kR_2pZ3fgkiFxeXltr0OP8V", "drive_link": "https://drive.google.com/file/d/1tuLPIDvj8kR_2pZ3fgkiFxeXltr0OP8V/view?usp=drivesdk", "short_desc": "Vineeri/kihtplaadi serv", "detail_desc": "Vineeri/kihtplaadi serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID036", "seq_nr": 36, "product_id": "PUIDUJAK-009", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID036.jpg", "original_name": "PXL_20261017_001713447.MP.jpg", "drive_id": "1b0LRa5hawU98IbFYIKunGNs3fVSywvdJ", "drive_link": "https://drive.google.com/file/d/1b0LRa5hawU98IbFYIKunGNs3fVSywvdJ/view?usp=drivesdk", "short_desc": "Valge ruutprofiil", "detail_desc": "Valge kattega ruutprofiil joonlauaga  (toode3.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID037", "seq_nr": 37, "product_id": "PUIDUJAK-009", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID037.jpg", "original_name": "PXL_20261017_001715420.MP.jpg", "drive_id": "1_RAKTWsNr5qklyuWDS3ufYdM3gBeaa_o", "drive_link": "https://drive.google.com/file/d/1_RAKTWsNr5qklyuWDS3ufYdM3gBeaa_o/view?usp=drivesdk", "short_desc": "Valge ruutprofiil", "detail_desc": "Valge kattega ruutprofiil joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID038", "seq_nr": 38, "product_id": "PUIDUJAK-009", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID038.jpg", "original_name": "PXL_20261017_001722490.MP.jpg", "drive_id": "13KAeLLyMTjnQ9speSJqU806xaMmQm2Qo", "drive_link": "https://drive.google.com/file/d/13KAeLLyMTjnQ9speSJqU806xaMmQm2Qo/view?usp=drivesdk", "short_desc": "Valge ruutprofiil", "detail_desc": "Valge kattega ruutprofiil joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID039", "seq_nr": 39, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID039.jpg", "original_name": "PXL_20261017_001814828.MP.jpg", "drive_id": "1IXiiNvrtIBkECPE49I60WPvggrpv-WKo", "drive_link": "https://drive.google.com/file/d/1IXiiNvrtIBkECPE49I60WPvggrpv-WKo/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID040", "seq_nr": 40, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID040.jpg", "original_name": "PXL_20261017_001826221.MP.jpg", "drive_id": "1HA0oX6Txc7Ni-DnTp4hdGTvgUBo_xWc_", "drive_link": "https://drive.google.com/file/d/1HA0oX6Txc7Ni-DnTp4hdGTvgUBo_xWc_/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID041", "seq_nr": 41, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID041.jpg", "original_name": "PXL_20261017_001828423.MP.jpg", "drive_id": "1g2lSsUqApuCr2d9zOKmray5YOlUcAjLc", "drive_link": "https://drive.google.com/file/d/1g2lSsUqApuCr2d9zOKmray5YOlUcAjLc/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID042", "seq_nr": 42, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID042.jpg", "original_name": "PXL_20261017_001911242.MP.jpg", "drive_id": "1LFiE-8IKHK_hKc7jRgbpFuMKnTQQsepS", "drive_link": "https://drive.google.com/file/d/1LFiE-8IKHK_hKc7jRgbpFuMKnTQQsepS/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID043", "seq_nr": 43, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID043.jpg", "original_name": "PXL_20261017_001951104.MP.jpg", "drive_id": "1sdl2ltZ2Jpz_TNo2ir7AExrJlhVsLUrn", "drive_link": "https://drive.google.com/file/d/1sdl2ltZ2Jpz_TNo2ir7AExrJlhVsLUrn/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID044", "seq_nr": 44, "product_id": "PUIDUJAK-010", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID044.jpg", "original_name": "PXL_20261017_001956903.MP.jpg", "drive_id": "1SFBaeHeH7Agf1WlW3TW0EuHJQVg8-bRK", "drive_link": "https://drive.google.com/file/d/1SFBaeHeH7Agf1WlW3TW0EuHJQVg8-bRK/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID045", "seq_nr": 45, "product_id": "PUIDUJAK-011", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID045.jpg", "original_name": "PXL_20261017_002052215.MP.jpg", "drive_id": "13wZYiiTs87GGL3uzXvBedB629QM4_rHC", "drive_link": "https://drive.google.com/file/d/13wZYiiTs87GGL3uzXvBedB629QM4_rHC/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID046", "seq_nr": 46, "product_id": "PUIDUJAK-011", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID046.jpg", "original_name": "PXL_20261017_002142489.MP.jpg", "drive_id": "1tmZMK5r-h0Y42oRPcYNFHuq1xjGW0F4r", "drive_link": "https://drive.google.com/file/d/1tmZMK5r-h0Y42oRPcYNFHuq1xjGW0F4r/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID047", "seq_nr": 47, "product_id": "PUIDUJAK-011", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID047.jpg", "original_name": "PXL_20261017_002145570.MP.jpg", "drive_id": "1t0H6apcn_n7Xq-B4RWj_labe7soUuVuE", "drive_link": "https://drive.google.com/file/d/1t0H6apcn_n7Xq-B4RWj_labe7soUuVuE/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID048", "seq_nr": 48, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID048.jpg", "original_name": "PXL_20261017_002247005.jpg", "drive_id": "15WpPJ2wc-IdadULBU7dNvEqGtdAexL-S", "drive_link": "https://drive.google.com/file/d/15WpPJ2wc-IdadULBU7dNvEqGtdAexL-S/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID049", "seq_nr": 49, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID049.jpg", "original_name": "PXL_20261017_002326199.jpg", "drive_id": "1oLm-XgzdWpw5pNq1zc_DlAuOlsmtvZpb", "drive_link": "https://drive.google.com/file/d/1oLm-XgzdWpw5pNq1zc_DlAuOlsmtvZpb/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID050", "seq_nr": 50, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID050.jpg", "original_name": "PXL_20261017_002406854.jpg", "drive_id": "1Tbp6QUoEwG4PNvwtE5vBW1lR4EbLKy8b", "drive_link": "https://drive.google.com/file/d/1Tbp6QUoEwG4PNvwtE5vBW1lR4EbLKy8b/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID051", "seq_nr": 51, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID051.jpg", "original_name": "PXL_20261017_002429518.MP.jpg", "drive_id": "1YhSPoFHrR2LStVWyr_Eblvpke3wFXCk-", "drive_link": "https://drive.google.com/file/d/1YhSPoFHrR2LStVWyr_Eblvpke3wFXCk-/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID052", "seq_nr": 52, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID052.jpg", "original_name": "PXL_20261017_002436863.MP.jpg", "drive_id": "1b6l3L7EpoDvQaiUMS06xBYpI2E_NPHoj", "drive_link": "https://drive.google.com/file/d/1b6l3L7EpoDvQaiUMS06xBYpI2E_NPHoj/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID053", "seq_nr": 53, "product_id": "PUIDUJAK-012", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID053.jpg", "original_name": "PXL_20261017_002517326.MP.jpg", "drive_id": "1Asa6zCHiAqIWN9DcuppXtpX47OMiQpa2", "drive_link": "https://drive.google.com/file/d/1Asa6zCHiAqIWN9DcuppXtpX47OMiQpa2/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID054", "seq_nr": 54, "product_id": "PUIDUJAK-013", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID054.jpg", "original_name": "PXL_20261017_002559490.MP.jpg", "drive_id": "12X10OC2FDluwzCq3LMx2fHanu-B_cDQw", "drive_link": "https://drive.google.com/file/d/12X10OC2FDluwzCq3LMx2fHanu-B_cDQw/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID055", "seq_nr": 55, "product_id": "PUIDUJAK-013", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID055.jpg", "original_name": "PXL_20261017_002703786.MP.jpg", "drive_id": "1qopGeVKo8dZhBN5NVWEuPK5PnVazHtEs", "drive_link": "https://drive.google.com/file/d/1qopGeVKo8dZhBN5NVWEuPK5PnVazHtEs/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID056", "seq_nr": 56, "product_id": "PUIDUJAK-013", "category": "plaat", "moot_cm": "", "mooduklass": "", "short_title": "plaat_ID056.jpg", "original_name": "PXL_20261017_002710426.MP.jpg", "drive_id": "1NbyqgWPRvQ8SIJRtm_1tzanna57Oq_FA", "drive_link": "https://drive.google.com/file/d/1NbyqgWPRvQ8SIJRtm_1tzanna57Oq_FA/view?usp=drivesdk", "short_desc": "Valge plaadiriba", "detail_desc": "Valge kattega plaadiribad / serv joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID057", "seq_nr": 57, "product_id": "PUIDUJAK-014", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID057.jpg", "original_name": "PXL_20261017_002842931.MP.jpg", "drive_id": "1mubVFvViqJ9YjULQmPkpWAmVa3Oks8yz", "drive_link": "https://drive.google.com/file/d/1mubVFvViqJ9YjULQmPkpWAmVa3Oks8yz/view?usp=drivesdk", "short_desc": "Liimpuidust/okaspuust klots", "detail_desc": "Kihtplaadist/liimpuidust plokk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID058", "seq_nr": 58, "product_id": "PUIDUJAK-014", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID058.jpg", "original_name": "PXL_20261017_002917090.MP.jpg", "drive_id": "1sp3KUP5nhG0cQI3Pm0u90DmqiG5AdSKu", "drive_link": "https://drive.google.com/file/d/1sp3KUP5nhG0cQI3Pm0u90DmqiG5AdSKu/view?usp=drivesdk", "short_desc": "Liimpuidust/okaspuust klots", "detail_desc": "Kihtplaadist/liimpuidust plokk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID059", "seq_nr": 59, "product_id": "PUIDUJAK-014", "category": "klots", "moot_cm": "", "mooduklass": "", "short_title": "klots_ID059.jpg", "original_name": "PXL_20261017_002947422.MP.jpg", "drive_id": "17XxMnDW9wCIXpIuUfZExiTK9ZKHRuIzw", "drive_link": "https://drive.google.com/file/d/17XxMnDW9wCIXpIuUfZExiTK9ZKHRuIzw/view?usp=drivesdk", "short_desc": "Liimpuidust/okaspuust klots", "detail_desc": "Kihtplaadist/liimpuidust plokk joonlauaga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID060", "seq_nr": 60, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID060.jpg", "original_name": "PXL_20261017_003051807.MP.jpg", "drive_id": "1j94Kj7Grrkrta9rn-WyEqOhc8tOeGWwk", "drive_link": "https://drive.google.com/file/d/1j94Kj7Grrkrta9rn-WyEqOhc8tOeGWwk/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)  (toode4.jpg)", "showcase_tag": "Erikujuline jääk", "showcase_note": "Skulpturaalne kiilukujuline puidujääk läbiva ümmarguse augu ja kõrge terava pinnuga."}, {"id": "ID061", "seq_nr": 61, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID061.jpg", "original_name": "PXL_20261017_003130025.MP.jpg", "drive_id": "1hLnF6N-pbPjGegKV-s1aLkLD4wWBmMY6", "drive_link": "https://drive.google.com/file/d/1hLnF6N-pbPjGegKV-s1aLkLD4wWBmMY6/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID062", "seq_nr": 62, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID062.jpg", "original_name": "PXL_20261017_003150571.jpg", "drive_id": "1XjKUV3rGNy2gEwzumrKkOUIscvkalnww", "drive_link": "https://drive.google.com/file/d/1XjKUV3rGNy2gEwzumrKkOUIscvkalnww/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID063", "seq_nr": 63, "product_id": "PUIDUJAK-015", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID063.jpg", "original_name": "PXL_20261017_003210662.MP.jpg", "drive_id": "1DnDNWuvurMJao05R4NfftBPYUM2ugFUZ", "drive_link": "https://drive.google.com/file/d/1DnDNWuvurMJao05R4NfftBPYUM2ugFUZ/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID064", "seq_nr": 64, "product_id": "PUIDUJAK-016", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID064.jpg", "original_name": "PXL_20261017_003237668.MP.jpg", "drive_id": "1nran3QH94rIxkKk1oXFZNSyINishzFXv", "drive_link": "https://drive.google.com/file/d/1nran3QH94rIxkKk1oXFZNSyINishzFXv/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID065", "seq_nr": 65, "product_id": "PUIDUJAK-016", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID065.jpg", "original_name": "PXL_20261017_003239848.MP.jpg", "drive_id": "1L0Bl5yeN_RNcOVSOJ4GaNi4fM-Fom0E3", "drive_link": "https://drive.google.com/file/d/1L0Bl5yeN_RNcOVSOJ4GaNi4fM-Fom0E3/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID066", "seq_nr": 66, "product_id": "PUIDUJAK-016", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID066.jpg", "original_name": "PXL_20261017_003318119.MP.jpg", "drive_id": "1ubSuycvT9rT6pGXIQRpBvq2736gCiNW2", "drive_link": "https://drive.google.com/file/d/1ubSuycvT9rT6pGXIQRpBvq2736gCiNW2/view?usp=drivesdk", "short_desc": "Kiilukujuline augu ja pinnuga jääk", "detail_desc": "Nikerdatud hele puitdetail (prototüüp)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID067", "seq_nr": 67, "product_id": "PUIDUJAK-017", "category": "erikuju", "moot_cm": "", "mooduklass": "", "short_title": "erikuju_ID067.jpg", "original_name": "PXL_20261017_003657727.MP.jpg", "drive_id": "1SgBlz3Q3GD8O4-KOfJ9DDK31bHyzNzb8", "drive_link": "https://drive.google.com/file/d/1SgBlz3Q3GD8O4-KOfJ9DDK31bHyzNzb8/view?usp=drivesdk", "short_desc": "Kaarjas laserlõigatud vineerijääk", "detail_desc": "Kaarjas dekoorpaneel kalasabamustriga  (toode5.jpg)", "showcase_tag": "Erikujuline jääk", "showcase_note": "Laserlõikusest üle jäänud kahe poolkaarega kasevineeri jääk metalljoonlaua kõrval."}, {"id": "ID068", "seq_nr": 68, "product_id": "PUIDUJAK-018", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID068.jpg", "original_name": "PXL_20261022_111557953.MP.jpg", "drive_id": "1T_RKQT3B0bxhsbqjuNOovDJlsizOmOmi", "drive_link": "https://drive.google.com/file/d/1T_RKQT3B0bxhsbqjuNOovDJlsizOmOmi/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID069", "seq_nr": 69, "product_id": "PUIDUJAK-018", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID069.jpg", "original_name": "PXL_20261022_111612896.jpg", "drive_id": "1BfhFxYT6CiGAyinshaTqPYUfOI61IPkD", "drive_link": "https://drive.google.com/file/d/1BfhFxYT6CiGAyinshaTqPYUfOI61IPkD/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID070", "seq_nr": 70, "product_id": "PUIDUJAK-018", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID070.jpg", "original_name": "PXL_20261022_111631653.jpg", "drive_id": "1aDM3IahSKdvD4OUBxQM64b-VkfZXc_eX", "drive_link": "https://drive.google.com/file/d/1aDM3IahSKdvD4OUBxQM64b-VkfZXc_eX/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID071", "seq_nr": 71, "product_id": "PUIDUJAK-019", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID071.jpg", "original_name": "PXL_20261022_111644419.MP.jpg", "drive_id": "1Xnw5flBiVtDdVI0h86ObbzJB7tON3KO3", "drive_link": "https://drive.google.com/file/d/1Xnw5flBiVtDdVI0h86ObbzJB7tON3KO3/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID072", "seq_nr": 72, "product_id": "PUIDUJAK-019", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID072.jpg", "original_name": "PXL_20261022_111651988.MP.jpg", "drive_id": "1Rwy9hhahtf75RYKEte9XoEwCsaWASvxj", "drive_link": "https://drive.google.com/file/d/1Rwy9hhahtf75RYKEte9XoEwCsaWASvxj/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Seest kõdunenud tüveketas lähivõttes  (toode6.jpg)", "showcase_tag": "Kahjustusega / seenmuster", "showcase_note": "C-kujuline männipaku ristlõige sügava lõhe, mustade seenekirjadega (spalting) ja vaigulaikudega — ideaalne epoksiidvaiguga täitmiseks."}, {"id": "ID073", "seq_nr": 73, "product_id": "PUIDUJAK-019", "category": "oksaauk", "moot_cm": "", "mooduklass": "", "short_title": "oksaauk_ID073.jpg", "original_name": "PXL_20261022_111701209.MP.jpg", "drive_id": "17ZnN7GQqH485qTbaGw1EcOeqSFz6p0P5", "drive_link": "https://drive.google.com/file/d/17ZnN7GQqH485qTbaGw1EcOeqSFz6p0P5/view?usp=drivesdk", "short_desc": "Oksaauguga korbatanud koor/tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Oksaauk", "showcase_note": "U-kujuline oksaauguga korbatanud koore- ja tüveosa."}, {"id": "ID074", "seq_nr": 74, "product_id": "PUIDUJAK-020", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID074.jpg", "original_name": "PXL_20261022_111708610.jpg", "drive_id": "17jcFvlAA7Q4PMsVm6z6fI_HwVRGDv0Fi", "drive_link": "https://drive.google.com/file/d/17jcFvlAA7Q4PMsVm6z6fI_HwVRGDv0Fi/view?usp=drivesdk", "short_desc": "Südamekujuline tüveketas", "detail_desc": "Seest kõdunenud tüveketas lähivõttes", "showcase_tag": "Erikujuline / disain", "showcase_note": "Looduslikult südamekujuline tüve ristlõige kahe sümmeetrilise aastarõnga „silmaga“."}, {"id": "ID075", "seq_nr": 75, "product_id": "PUIDUJAK-020", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID075.jpg", "original_name": "PXL_20261022_111713422.jpg", "drive_id": "1UsBmvGW524XP1dYXup3__ctlITvII3Op", "drive_link": "https://drive.google.com/file/d/1UsBmvGW524XP1dYXup3__ctlITvII3Op/view?usp=drivesdk", "short_desc": "Südamekujuline tüveketas", "detail_desc": "Seest kõdunenud tüveketas lähivõttes", "showcase_tag": "", "showcase_note": ""}, {"id": "ID076", "seq_nr": 76, "product_id": "PUIDUJAK-020", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID076.jpg", "original_name": "PXL_20261022_111719024.jpg", "drive_id": "1CQfgEVirIoEqfeS5rZACOBX4wQKsibzn", "drive_link": "https://drive.google.com/file/d/1CQfgEVirIoEqfeS5rZACOBX4wQKsibzn/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Koor ja pahk", "showcase_note": "Sügavate vagude ja rohelise samblaga paks korbatanud pahatükk (terraariumi/dekoori materjal)."}, {"id": "ID077", "seq_nr": 77, "product_id": "PUIDUJAK-020", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID077.jpg", "original_name": "PXL_20261022_111724307.MP.jpg", "drive_id": "1p9SkiAkr5Ybk-k25dSSBIQ5ZmMoimBfm", "drive_link": "https://drive.google.com/file/d/1p9SkiAkr5Ybk-k25dSSBIQ5ZmMoimBfm/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID078", "seq_nr": 78, "product_id": "PUIDUJAK-021", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID078.jpg", "original_name": "PXL_20261022_111947119.jpg", "drive_id": "1PQJ39C-W2DF8uaIhPVl_tJMPSwDQAni7", "drive_link": "https://drive.google.com/file/d/1PQJ39C-W2DF8uaIhPVl_tJMPSwDQAni7/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID079", "seq_nr": 79, "product_id": "PUIDUJAK-021", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID079.jpg", "original_name": "PXL_20261022_111955358.jpg", "drive_id": "1PgGBaRJ0-qyrfEfvdNDzXkyvvaWsgo_0", "drive_link": "https://drive.google.com/file/d/1PgGBaRJ0-qyrfEfvdNDzXkyvvaWsgo_0/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID080", "seq_nr": 80, "product_id": "PUIDUJAK-021", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID080.jpg", "original_name": "PXL_20261022_111958839.MP.jpg", "drive_id": "195bd85r_pMNOMVqRbpbyyAd5Ct0JjmJe", "drive_link": "https://drive.google.com/file/d/195bd85r_pMNOMVqRbpbyyAd5Ct0JjmJe/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks  (toode8.jpg)", "showcase_tag": "Tüveõõnsus / rõngas", "showcase_note": "Sõõrikukujuline („O“-kujuline) seest tühi tüverõngas paksu krobelise korbaga."}, {"id": "ID081", "seq_nr": 81, "product_id": "PUIDUJAK-021", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID081.jpg", "original_name": "PXL_20261022_112000730.jpg", "drive_id": "1pyO-EIUul8Lspmb6wbJ5eZEmU8BumL40", "drive_link": "https://drive.google.com/file/d/1pyO-EIUul8Lspmb6wbJ5eZEmU8BumL40/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID082", "seq_nr": 82, "product_id": "PUIDUJAK-022", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID082.jpg", "original_name": "PXL_20261022_112046566.MP.jpg", "drive_id": "1tl2FqnWhEqm6u_HqindnN6CvQGBl6tbH", "drive_link": "https://drive.google.com/file/d/1tl2FqnWhEqm6u_HqindnN6CvQGBl6tbH/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "Kahjustusega puit", "showcase_note": "Paks puiduplank rusikasuuruse sisemise õõnsuse, tumeda veekahjustuse ja diagonaalse saesisselõikega."}, {"id": "ID083", "seq_nr": 83, "product_id": "PUIDUJAK-022", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID083.jpg", "original_name": "PXL_20261022_112115476.MP.jpg", "drive_id": "1DwWazJvyIGhYfjC6VPKUQuZKl9ZhALv0", "drive_link": "https://drive.google.com/file/d/1DwWazJvyIGhYfjC6VPKUQuZKl9ZhALv0/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Seest kõdunenud tüveketas lähivõttes  (toode7.jpg)", "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Suure mureda siseõõnsuse ja tumeda värvimuutusega dekoratiivne tüveketas."}, {"id": "ID084", "seq_nr": 84, "product_id": "PUIDUJAK-022", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID084.jpg", "original_name": "PXL_20261022_112122727.MP.jpg", "drive_id": "1PwdcN1j1tzo52J-euv571tuSkqUq_CCs", "drive_link": "https://drive.google.com/file/d/1PwdcN1j1tzo52J-euv571tuSkqUq_CCs/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID085", "seq_nr": 85, "product_id": "PUIDUJAK-022", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID085.jpg", "original_name": "PXL_20261022_112141590.jpg", "drive_id": "1eywgsYdKCSQ30dAcld6tWeS1Mi-U99Ls", "drive_link": "https://drive.google.com/file/d/1eywgsYdKCSQ30dAcld6tWeS1Mi-U99Ls/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID086", "seq_nr": 86, "product_id": "PUIDUJAK-022", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID086.jpg", "original_name": "PXL_20261022_112155172.jpg", "drive_id": "18Ni-cqPb9ssyhruT-mMfo_VI_zvZBhIT", "drive_link": "https://drive.google.com/file/d/18Ni-cqPb9ssyhruT-mMfo_VI_zvZBhIT/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID087", "seq_nr": 87, "product_id": "PUIDUJAK-022", "category": "ketas", "moot_cm": "", "mooduklass": "", "short_title": "ketas_ID087.jpg", "original_name": "PXL_20261022_112156821.jpg", "drive_id": "194jkDOiErAn543BhZCa9EneK--rAo6ch", "drive_link": "https://drive.google.com/file/d/194jkDOiErAn543BhZCa9EneK--rAo6ch/view?usp=drivesdk", "short_desc": "Tüveketas ristlõikes", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID088", "seq_nr": 88, "product_id": "PUIDUJAK-023", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID088.jpg", "original_name": "PXL_20261022_112222427.jpg", "drive_id": "1TKtiL0Oi53NZCdlaS8dgDTxyK2iNzYxP", "drive_link": "https://drive.google.com/file/d/1TKtiL0Oi53NZCdlaS8dgDTxyK2iNzYxP/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Pealtvaates tüveketas, mille keskel on tume käsnja servaga pehkinud õõnsus (50 € mõõtkavaks)."}, {"id": "ID089", "seq_nr": 89, "product_id": "PUIDUJAK-023", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID089.jpg", "original_name": "PXL_20261022_112224431.jpg", "drive_id": "18qRGlCto7bBmVjPgQPUnlCgWt9G5Mo0g", "drive_link": "https://drive.google.com/file/d/18qRGlCto7bBmVjPgQPUnlCgWt9G5Mo0g/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID090", "seq_nr": 90, "product_id": "PUIDUJAK-023", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID090.jpg", "original_name": "PXL_20261022_112230966.MP.jpg", "drive_id": "1KkeOyM-TFRO-7mdJZVi2zmBRd9SLBy_m", "drive_link": "https://drive.google.com/file/d/1KkeOyM-TFRO-7mdJZVi2zmBRd9SLBy_m/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID091", "seq_nr": 91, "product_id": "PUIDUJAK-024", "category": "oksaauk", "moot_cm": "", "mooduklass": "", "short_title": "oksaauk_ID091.jpg", "original_name": "PXL_20261022_112239837.jpg", "drive_id": "19qEorxtVmWOVUOyTpKFate1dKgbYkM-D", "drive_link": "https://drive.google.com/file/d/19qEorxtVmWOVUOyTpKFate1dKgbYkM-D/view?usp=drivesdk", "short_desc": "Oksaauguga korbatanud koor/tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Oksaauk", "showcase_note": "Suure loodusliku ovaalse oksaauguga vana korbatanud kooretükk."}, {"id": "ID092", "seq_nr": 92, "product_id": "PUIDUJAK-024", "category": "oksakrae", "moot_cm": "", "mooduklass": "", "short_title": "oksakrae_ID092.jpg", "original_name": "PXL_20261022_112247459.MP.jpg", "drive_id": "1jR2C_2aHZzF5EwDkumK2r-3DutK-9eOG", "drive_link": "https://drive.google.com/file/d/1jR2C_2aHZzF5EwDkumK2r-3DutK-9eOG/view?usp=drivesdk", "short_desc": "Oksakrae / okslik tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Oksakrae", "showcase_note": "Selge ümara oksakraega paks korbatanud tüve- ja kooretükk."}, {"id": "ID093", "seq_nr": 93, "product_id": "PUIDUJAK-024", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID093.jpg", "original_name": "PXL_20261022_112303604.jpg", "drive_id": "1UZKxlWDpQogRcVDktiKlUV2_dfL521Nx", "drive_link": "https://drive.google.com/file/d/1UZKxlWDpQogRcVDktiKlUV2_dfL521Nx/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID094", "seq_nr": 94, "product_id": "PUIDUJAK-024", "category": "koor", "moot_cm": "", "mooduklass": "", "short_title": "koor_ID094.jpg", "original_name": "PXL_20261022_112333021.jpg", "drive_id": "10Pq0qLUbyl0bb8lpilJrPIVXi6J7h7YK", "drive_link": "https://drive.google.com/file/d/10Pq0qLUbyl0bb8lpilJrPIVXi6J7h7YK/view?usp=drivesdk", "short_desc": "Paks korbatanud kooretükk / pahk", "detail_desc": "Tüveosa või ketas, kõrval eurokupüür mõõtkavaks", "showcase_tag": "", "showcase_note": ""}, {"id": "ID095", "seq_nr": 95, "product_id": "PUIDUJAK-025", "category": "oksakrae", "moot_cm": "", "mooduklass": "", "short_title": "oksakrae_ID095.jpg", "original_name": "PXL_20261022_112410816.MP.jpg", "drive_id": "1cnre0-WUfaWAZxELR-VvxzfknDBO8FmO", "drive_link": "https://drive.google.com/file/d/1cnre0-WUfaWAZxELR-VvxzfknDBO8FmO/view?usp=drivesdk", "short_desc": "Oksakrae / okslik tüveosa", "detail_desc": "Juurikas/oksad mõõdulindiga", "showcase_tag": "Oksakrae", "showcase_note": "Oksakraedega okslik tüvejupp kollase mõõdulindi kõrval."}, {"id": "ID096", "seq_nr": 96, "product_id": "PUIDUJAK-025", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID096.jpg", "original_name": "PXL_20261022_112416697.jpg", "drive_id": "1LzXWpZE8UezGu4-hQ-ZUO7M4_WQdlCGT", "drive_link": "https://drive.google.com/file/d/1LzXWpZE8UezGu4-hQ-ZUO7M4_WQdlCGT/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "Käsnjas puit (Spongy)", "showcase_note": "Parim näide seest pehmeks ja muredaks pehkinud õõnsusega okslikust tüvetükist koos värske saelõikega."}, {"id": "ID097", "seq_nr": 97, "product_id": "PUIDUJAK-025", "category": "tuveoonsus", "moot_cm": "", "mooduklass": "", "short_title": "tuveoonsus_ID097.jpg", "original_name": "PXL_20261022_112420611.jpg", "drive_id": "1U1GY4yKnbxOcoTbxxA31wyUaHcK0osBe", "drive_link": "https://drive.google.com/file/d/1U1GY4yKnbxOcoTbxxA31wyUaHcK0osBe/view?usp=drivesdk", "short_desc": "Tüveõõnsus / seest pehkinud tüveosa", "detail_desc": "Õõnes/koorega tüveosa või pahk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID098", "seq_nr": 98, "product_id": "PUIDUJAK-026", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID098.jpg", "original_name": "PXL_20261022_112935025.MP.jpg", "drive_id": "1TgFDwEVkS-QEqKnUKTh_UczmWUzy0yoU", "drive_link": "https://drive.google.com/file/d/1TgFDwEVkS-QEqKnUKTh_UczmWUzy0yoU/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID099", "seq_nr": 99, "product_id": "PUIDUJAK-026", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID099.jpg", "original_name": "PXL_20261022_112944065.MP.jpg", "drive_id": "14pVDSwzhuz6zylk2D6fHldqiGIMnvsB1", "drive_link": "https://drive.google.com/file/d/14pVDSwzhuz6zylk2D6fHldqiGIMnvsB1/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID100", "seq_nr": 100, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID100.jpg", "original_name": "PXL_20261022_113251943.MP.jpg", "drive_id": "1KoJbFAk53tDdvZTdwImlUK2MGld-IB9E", "drive_link": "https://drive.google.com/file/d/1KoJbFAk53tDdvZTdwImlUK2MGld-IB9E/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID101", "seq_nr": 101, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID101.jpg", "original_name": "PXL_20261022_113340276.MP.jpg", "drive_id": "1ZUJJHpUwiAmHiRmqnr3fnVcpj-Pb9vdC", "drive_link": "https://drive.google.com/file/d/1ZUJJHpUwiAmHiRmqnr3fnVcpj-Pb9vdC/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID102", "seq_nr": 102, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID102.jpg", "original_name": "PXL_20261022_113347742.jpg", "drive_id": "1PeIRUotjlmIsq8QkYk78VUdQ1AmP6fxC", "drive_link": "https://drive.google.com/file/d/1PeIRUotjlmIsq8QkYk78VUdQ1AmP6fxC/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID103", "seq_nr": 103, "product_id": "PUIDUJAK-027", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID103.jpg", "original_name": "PXL_20261022_113356831.jpg", "drive_id": "1scQhmaHiOYDW6X7BiN_-zXwqj28p82sP", "drive_link": "https://drive.google.com/file/d/1scQhmaHiOYDW6X7BiN_-zXwqj28p82sP/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID104", "seq_nr": 104, "product_id": "PUIDUJAK-028", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID104.jpg", "original_name": "PXL_20261022_113416638.jpg", "drive_id": "1q20NqI5KAAa9G4v5AMlhR6xpJ0GP-VwB", "drive_link": "https://drive.google.com/file/d/1q20NqI5KAAa9G4v5AMlhR6xpJ0GP-VwB/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID105", "seq_nr": 105, "product_id": "PUIDUJAK-028", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID105.jpg", "original_name": "PXL_20261022_113420239.jpg", "drive_id": "19qvFSutLd3qyO6wemg3tBd-qi3h4QWGS", "drive_link": "https://drive.google.com/file/d/19qvFSutLd3qyO6wemg3tBd-qi3h4QWGS/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID106", "seq_nr": 106, "product_id": "PUIDUJAK-028", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID106.jpg", "original_name": "PXL_20261022_113446910.jpg", "drive_id": "1QDGpucDXS8alidmbbqfW6pwgtF2nqz53", "drive_link": "https://drive.google.com/file/d/1QDGpucDXS8alidmbbqfW6pwgtF2nqz53/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Kännud ja juurikad looduses", "showcase_tag": "", "showcase_note": ""}, {"id": "ID107", "seq_nr": 107, "product_id": "PUIDUJAK-029", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID107.jpg", "original_name": "PXL_20261022_113716648.MP.jpg", "drive_id": "1ymgvKesPmxY269ynx3SOWphvOFG7j1lO", "drive_link": "https://drive.google.com/file/d/1ymgvKesPmxY269ynx3SOWphvOFG7j1lO/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitalused kivisillutisel", "showcase_tag": "", "showcase_note": ""}, {"id": "ID108", "seq_nr": 108, "product_id": "PUIDUJAK-029", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID108.jpg", "original_name": "PXL_20261022_113720694.MP.jpg", "drive_id": "1XqHIdA4G6srI3wYEDDAwVUmN_Wes3NWT", "drive_link": "https://drive.google.com/file/d/1XqHIdA4G6srI3wYEDDAwVUmN_Wes3NWT/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitalused kivisillutisel", "showcase_tag": "", "showcase_note": ""}, {"id": "ID109", "seq_nr": 109, "product_id": "PUIDUJAK-029", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID109.jpg", "original_name": "PXL_20261022_113732679.MP.jpg", "drive_id": "1ZCjuTNI0VIiFRTTUvE6Gk5hvYo3k-iCU", "drive_link": "https://drive.google.com/file/d/1ZCjuTNI0VIiFRTTUvE6Gk5hvYo3k-iCU/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitalused murul, taamal sõiduk", "showcase_tag": "", "showcase_note": ""}, {"id": "ID110", "seq_nr": 110, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID110.jpg", "original_name": "PXL_20261022_113818822.jpg", "drive_id": "1C37CtWytcPUMSSxejtsPryQDwkWiyeQO", "drive_link": "https://drive.google.com/file/d/1C37CtWytcPUMSSxejtsPryQDwkWiyeQO/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palk murul", "showcase_tag": "", "showcase_note": ""}, {"id": "ID111", "seq_nr": 111, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID111.jpg", "original_name": "PXL_20261022_113828377.MP.jpg", "drive_id": "1s0yL8w_ofj8BX9XBgToMVXFg81dhNCwr", "drive_link": "https://drive.google.com/file/d/1s0yL8w_ofj8BX9XBgToMVXFg81dhNCwr/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palk murul", "showcase_tag": "", "showcase_note": ""}, {"id": "ID112", "seq_nr": 112, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID112.jpg", "original_name": "PXL_20261022_113838714.MP.jpg", "drive_id": "1b7iyqSOiwsR0QZT4vrf55P09XU5m8jpR", "drive_link": "https://drive.google.com/file/d/1b7iyqSOiwsR0QZT4vrf55P09XU5m8jpR/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID113", "seq_nr": 113, "product_id": "PUIDUJAK-030", "category": "palk", "moot_cm": "", "mooduklass": "", "short_title": "palk_ID113.jpg", "original_name": "PXL_20261022_113851080.jpg", "drive_id": "1mVuUyYo-GvxnDbo5yh5NtLAqXroGkRtL", "drive_link": "https://drive.google.com/file/d/1mVuUyYo-GvxnDbo5yh5NtLAqXroGkRtL/view?usp=drivesdk", "short_desc": "Palk või juurekaelaga känd õues", "detail_desc": "Palgid õues (osal silt/kupüür)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID114", "seq_nr": 114, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID114.jpg", "original_name": "PXL_20261022_113914805.MP.jpg", "drive_id": "1UTyervBYLL4bl55srj86BR080ac8DnWC", "drive_link": "https://drive.google.com/file/d/1UTyervBYLL4bl55srj86BR080ac8DnWC/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad  (toode9.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID115", "seq_nr": 115, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID115.jpg", "original_name": "PXL_20261022_113921404.MP.jpg", "drive_id": "1LPO9e1xoEsjrctgLiWRFWge6ZrM5ZXJ_", "drive_link": "https://drive.google.com/file/d/1LPO9e1xoEsjrctgLiWRFWge6ZrM5ZXJ_/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID116", "seq_nr": 116, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID116.jpg", "original_name": "PXL_20261022_113929667.jpg", "drive_id": "16qhyATm7R-SBq7iLaD4L2Hd_lPaT83mI", "drive_link": "https://drive.google.com/file/d/16qhyATm7R-SBq7iLaD4L2Hd_lPaT83mI/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID117", "seq_nr": 117, "product_id": "PUIDUJAK-031", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID117.jpg", "original_name": "PXL_20261022_113938147.MP.jpg", "drive_id": "1V-SRoVLhH8gaq_zBMRuAqFDGdALKsb2R", "drive_link": "https://drive.google.com/file/d/1V-SRoVLhH8gaq_zBMRuAqFDGdALKsb2R/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID118", "seq_nr": 118, "product_id": "PUIDUJAK-032", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID118.jpg", "original_name": "PXL_20261022_113947961.MP.jpg", "drive_id": "1wcWEz3PInQfIHAcBySFc5T2FE_dgF-QU", "drive_link": "https://drive.google.com/file/d/1wcWEz3PInQfIHAcBySFc5T2FE_dgF-QU/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID119", "seq_nr": 119, "product_id": "PUIDUJAK-032", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID119.jpg", "original_name": "PXL_20261022_113954829.jpg", "drive_id": "1Ui9yIhg5RDMqNcF6f1lE1v_9Y1lVi64K", "drive_link": "https://drive.google.com/file/d/1Ui9yIhg5RDMqNcF6f1lE1v_9Y1lVi64K/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID120", "seq_nr": 120, "product_id": "PUIDUJAK-032", "category": "alus", "moot_cm": "", "mooduklass": "", "short_title": "alus_ID120.jpg", "original_name": "PXL_20261022_114022430.MP.jpg", "drive_id": "1rc-q9hYLzAnezxnPAF6WsJQQYsJVp_RS", "drive_link": "https://drive.google.com/file/d/1rc-q9hYLzAnezxnPAF6WsJQQYsJVp_RS/view?usp=drivesdk", "short_desc": "Puitalus / aluste virn", "detail_desc": "Puitaluste virnad", "showcase_tag": "", "showcase_note": ""}, {"id": "ID121", "seq_nr": 121, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID121.jpg", "original_name": "PXL_20261022_114120383.MP.jpg", "drive_id": "10z-K2Yn7oIsoH9IZMN2LDANhIKM1-9Cb", "drive_link": "https://drive.google.com/file/d/10z-K2Yn7oIsoH9IZMN2LDANhIKM1-9Cb/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Kaks pikka okaspuulauda  (toode10.jpg)", "showcase_tag": "", "showcase_note": ""}, {"id": "ID122", "seq_nr": 122, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID122.jpg", "original_name": "PXL_20261022_114202113.MP.jpg", "drive_id": "1bv4QzD-L43Qs3MNN9KUMv-7A5JVT2ILw", "drive_link": "https://drive.google.com/file/d/1bv4QzD-L43Qs3MNN9KUMv-7A5JVT2ILw/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laua alumine osa mõõdulindiga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID123", "seq_nr": 123, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID123.jpg", "original_name": "PXL_20261022_114202205.jpg", "drive_id": "1APopxbRvsDC-vRY5-C-wJQAP95BDiPSv", "drive_link": "https://drive.google.com/file/d/1APopxbRvsDC-vRY5-C-wJQAP95BDiPSv/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laua alumine osa mõõdulindiga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID124", "seq_nr": 124, "product_id": "PUIDUJAK-033", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID124.jpg", "original_name": "PXL_20261022_114224088.MP.jpg", "drive_id": "1yIu2JzjxK-jxTeq4JScViAyzC7GMBF8l", "drive_link": "https://drive.google.com/file/d/1yIu2JzjxK-jxTeq4JScViAyzC7GMBF8l/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laua alumine osa mõõdulindiga", "showcase_tag": "", "showcase_note": ""}, {"id": "ID125", "seq_nr": 125, "product_id": "PUIDUJAK-034", "category": "laud", "moot_cm": "", "mooduklass": "", "short_title": "laud_ID125.jpg", "original_name": "PXL_20261022_114731157.MP.jpg", "drive_id": "15IJjEAKdLYglJuxL73YYKHOnl1lT76-3", "drive_link": "https://drive.google.com/file/d/15IJjEAKdLYglJuxL73YYKHOnl1lT76-3/view?usp=drivesdk", "short_desc": "Pikad okaspuulauad / lauavirn", "detail_desc": "Laudade virn konteineri ääres", "showcase_tag": "", "showcase_note": ""}]};
+
+const CATEGORY_META = {
+  "all": { label: "Kõik kategooriad", icon: "🪵" },
+  "showcase": { label: "🌟 Kliendinäidised (käsnjas / kahjustatud / erikuju)", icon: "🌟", highlight: true },
+  "tuveoonsus": { label: "tuveoonsus (Tüveõõnsus / käsnjas)", icon: "🕳️", highlight: true },
+  "oksaauk": { label: "oksaauk (Oksaauk)", icon: "⭕", highlight: true },
+  "oksakrae": { label: "oksakrae (Oksakrae)", icon: "🌿", highlight: true },
+  "ketas": { label: "ketas (Tüveketas)", icon: "🪵" },
+  "koor": { label: "koor (Koor & pahk)", icon: "🌲" },
+  "erikuju": { label: "erikuju (Erikujuline jääk)", icon: "✨", highlight: true },
+  "klots": { label: "klots (Klots & profiil)", icon: "🧱" },
+  "plaat": { label: "plaat (Plaat & vineer)", icon: "📐" },
+  "laud": { label: "laud (Laud & liist)", icon: "📏" },
+  "palk": { label: "palk (Palk & känd)", icon: "🌳" },
+  "alus": { label: "alus (Puitalus)", icon: "📦" }
+};
+
+const DIM_META = {
+  "all": "Kõik mõõdud",
+  "alla30cm": "alla30cm (< 30 cm)",
+  "alla50cm": "alla50cm (30–49 cm)",
+  "alla1m": "alla1m (50–99 cm)",
+  "yle1m": "yle1m (≥ 1 m)",
+  "none": "Mõõt täpsustamisel (tühi)"
+};
+
+// State
+let currentView = 'products'; // 'products' | 'photos'
+let activeCategory = 'all';
+let activeDimClass = 'all';
+let activePhotoIndexByProduct = {}; // product_id -> photo array index
+let userDimensions = {}; // photo_id ("ID072") -> raw cm string entered by user
+let sentInterests = {}; // key -> true
+
+// Load saved dimensions from localStorage if any
+try {
+  const savedDims = JSON.parse(localStorage.getItem('pj_user_dims') || '{}');
+  if (savedDims && typeof savedDims === 'object') userDimensions = savedDims;
+} catch (e) {}
+
+// Initialize default cover photo index for each product
+CATALOG.products.forEach(p => {
+  activePhotoIndexByProduct[p.product_id] = p.cover_index || 0;
+});
+
+function parseCallerDimCm(raw) {
+  if (!raw || !String(raw).trim()) return null;
+  const text = String(raw).trim().toLowerCase().replace(',', '.');
+  const mMatch = text.match(/(\d+(?:\.\d+)?)\s*m\b/);
+  if (mMatch && !text.includes('mm') && !text.includes('cm')) {
+    return parseFloat(mMatch[1]) * 100.0;
+  }
+  const nums = (text.match(/\d+(?:\.\d+)?/g) || []).map(Number);
+  if (!nums.length) return null;
+  return Math.max(...nums);
+}
+
+function getDimensionCategory(maxCm) {
+  if (maxCm === null || maxCm === undefined || isNaN(maxCm)) return '';
+  if (maxCm < 30) return 'alla30cm';
+  if (maxCm < 50) return 'alla50cm';
+  if (maxCm < 100) return 'alla1m';
+  return 'yle1m';
+}
+
+function computePhotoTitleAndDim(photo) {
+  const rawDim = (userDimensions[photo.id] !== undefined ? userDimensions[photo.id] : photo.moot_cm) || '';
+  const maxCm = parseCallerDimCm(rawDim);
+  const dimClass = getDimensionCategory(maxCm);
+  const shortTitle = dimClass
+    ? `${photo.category}_${dimClass}_${photo.id}.jpg`
+    : `${photo.category}_${photo.id}.jpg`;
+  return { rawDim, maxCm, dimClass, shortTitle };
+}
+
+function setCallerDim(photoId, value, productId) {
+  userDimensions[photoId] = value.trim();
+  try {
+    localStorage.setItem('pj_user_dims', JSON.stringify(userDimensions));
+  } catch (e) {}
+  updateSingleCardTitles(photoId, productId);
+  renderFilterPills();
+}
+
+function updateSingleCardTitles(photoId, productId) {
+  const photo = CATALOG.photos.find(x => x.id === photoId);
+  if (!photo) return;
+  const info = computePhotoTitleAndDim(photo);
+  document.querySelectorAll(`[data-short-title-for="${photoId}"]`).forEach(el => {
+    el.textContent = info.shortTitle;
+  });
+  document.querySelectorAll(`[data-dim-badge-for="${photoId}"]`).forEach(el => {
+    if (info.dimClass) {
+      el.textContent = `📏 ${info.dimClass} (${info.rawDim} cm)`;
+      el.className = 'dim-badge has-dim';
+    } else {
+      el.textContent = '📏 mõõt täpsustamisel';
+      el.className = 'dim-badge';
+    }
+  });
+}
+
+function renderFilterPills() {
+  const catContainer = document.getElementById('categoryPills');
+  const items = currentView === 'products' ? CATALOG.products : CATALOG.photos;
+
+  const counts = { all: items.length, showcase: 0 };
+  Object.keys(CATEGORY_META).forEach(k => { if (k !== 'all' && k !== 'showcase') counts[k] = 0; });
+
+  if (currentView === 'products') {
+    CATALOG.products.forEach(p => {
+      if (p.is_showcase) counts.showcase++;
+      p.categories.forEach(c => { counts[c] = (counts[c] || 0) + 1; });
+    });
+  } else {
+    CATALOG.photos.forEach(ph => {
+      if (ph.showcase_tag) counts.showcase++;
+      counts[ph.category] = (counts[ph.category] || 0) + 1;
+    });
+  }
+
+  catContainer.innerHTML = Object.entries(CATEGORY_META).map(([key, meta]) => {
+    const isAct = activeCategory === key;
+    const cls = `pill ${meta.highlight ? 'highlight-pill' : ''} ${isAct ? 'active' : ''}`;
+    return `<button type="button" class="${cls}" onclick="selectCategory('${key}')">
+      ${meta.label} <span class="cnt">(${counts[key] || 0})</span>
+    </button>`;
+  }).join('');
+
+  // Dimension pills
+  const dimCounts = { all: items.length, alla30cm: 0, alla50cm: 0, alla1m: 0, yle1m: 0, none: 0 };
+  if (currentView === 'products') {
+    CATALOG.products.forEach(p => {
+      const idx = activePhotoIndexByProduct[p.product_id] || 0;
+      const ph = p.photos[idx] || p.photos[0];
+      const { dimClass } = computePhotoTitleAndDim(ph);
+      if (dimClass) dimCounts[dimClass]++;
+      else dimCounts.none++;
+    });
+  } else {
+    CATALOG.photos.forEach(ph => {
+      const { dimClass } = computePhotoTitleAndDim(ph);
+      if (dimClass) dimCounts[dimClass]++;
+      else dimCounts.none++;
+    });
+  }
+
+  const dimContainer = document.getElementById('dimPills');
+  dimContainer.innerHTML = Object.entries(DIM_META).map(([key, label]) => {
+    const isAct = activeDimClass === key;
+    return `<button type="button" class="pill ${isAct ? 'active' : ''}" onclick="selectDimClass('${key}')">
+      ${label} <span class="cnt">(${dimCounts[key] || 0})</span>
+    </button>`;
+  }).join('');
+}
+
+function selectCategory(cat) {
+  activeCategory = cat;
+  renderCatalog();
+}
+
+function selectDimClass(dc) {
+  activeDimClass = dc;
+  renderCatalog();
+}
+
+function setShowcaseFilter() {
+  activeCategory = 'showcase';
+  document.getElementById('turuplats').scrollIntoView({ behavior: 'smooth' });
+  renderCatalog();
+}
+
+function switchView(view) {
+  currentView = view;
+  document.getElementById('tabProducts').classList.toggle('active', view === 'products');
+  document.getElementById('tabPhotos').classList.toggle('active', view === 'photos');
+  renderCatalog();
+}
+
+function selectProductPhoto(productId, photoIdx) {
+  activePhotoIndexByProduct[productId] = photoIdx;
+  renderCatalog();
+}
+
+function stepProductPhoto(productId, delta) {
+  const prod = CATALOG.products.find(p => p.product_id === productId);
+  if (!prod) return;
+  const cur = activePhotoIndexByProduct[productId] || 0;
+  const next = (cur + delta + prod.photos.length) % prod.photos.length;
+  activePhotoIndexByProduct[productId] = next;
+  renderCatalog();
+}
+
+function renderCatalog() {
+  renderFilterPills();
+  const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+  const sortMode = document.getElementById('sortSelect').value;
+  const grid = document.getElementById('catalogGrid');
+
+  if (currentView === 'products') {
+    let list = CATALOG.products.filter(p => {
+      const idx = activePhotoIndexByProduct[p.product_id] || 0;
+      const ph = p.photos[idx] || p.photos[0];
+      const info = computePhotoTitleAndDim(ph);
+
+      if (activeCategory === 'showcase' && !p.is_showcase) return false;
+      if (activeCategory !== 'all' && activeCategory !== 'showcase' && !p.categories.includes(activeCategory)) return false;
+
+      if (activeDimClass === 'none' && info.dimClass !== '') return false;
+      if (activeDimClass !== 'all' && activeDimClass !== 'none' && info.dimClass !== activeDimClass) return false;
+
+      if (q) {
+        const hay = [
+          p.product_id, p.title, p.id_range, p.categories.join(' '),
+          info.shortTitle, ph.id, ph.detail_desc, p.showcase_note
+        ].join(' ').toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+
+    if (sortMode === 'cat_asc') {
+      list.sort((a, b) => {
+        const pa = a.photos[activePhotoIndexByProduct[a.product_id] || 0];
+        const pb = b.photos[activePhotoIndexByProduct[b.product_id] || 0];
+        return computePhotoTitleAndDim(pa).shortTitle.localeCompare(computePhotoTitleAndDim(pb).shortTitle);
+      });
+    } else if (sortMode === 'showcase_first') {
+      list.sort((a, b) => (b.is_showcase ? 1 : 0) - (a.is_showcase ? 1 : 0) || a.product_id.localeCompare(b.product_id));
+    } else {
+      list.sort((a, b) => a.product_id.localeCompare(b.product_id));
+    }
+
+    document.getElementById('resultSummary').innerHTML =
+      `Kuvatakse <b>${list.length}</b> tootegruppi (kokku ${list.reduce((s, x) => s + x.photo_count, 0)} fotot)`;
+
+    grid.innerHTML = list.map(p => renderProductCard(p)).join('');
+  } else {
+    let list = CATALOG.photos.filter(ph => {
+      const info = computePhotoTitleAndDim(ph);
+      if (activeCategory === 'showcase' && !ph.showcase_tag) return false;
+      if (activeCategory !== 'all' && activeCategory !== 'showcase' && ph.category !== activeCategory) return false;
+
+      if (activeDimClass === 'none' && info.dimClass !== '') return false;
+      if (activeDimClass !== 'all' && activeDimClass !== 'none' && info.dimClass !== activeDimClass) return false;
+
+      if (q) {
+        const hay = [
+          ph.id, ph.product_id, info.shortTitle, ph.category,
+          ph.short_desc, ph.detail_desc, ph.showcase_note, ph.original_name
+        ].join(' ').toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+
+    if (sortMode === 'cat_asc') {
+      list.sort((a, b) => computePhotoTitleAndDim(a).shortTitle.localeCompare(computePhotoTitleAndDim(b).shortTitle));
+    } else if (sortMode === 'showcase_first') {
+      list.sort((a, b) => (b.showcase_tag ? 1 : 0) - (a.showcase_tag ? 1 : 0) || a.seq_nr - b.seq_nr);
+    } else {
+      list.sort((a, b) => a.seq_nr - b.seq_nr);
+    }
+
+    document.getElementById('resultSummary').innerHTML =
+      `Kuvatakse <b>${list.length}</b> fotot (125 unikaalsest fotost ID001–ID125)`;
+
+    grid.innerHTML = list.map(ph => renderSinglePhotoCard(ph)).join('');
+  }
+}
+
+function renderProductCard(p) {
+  const idx = activePhotoIndexByProduct[p.product_id] || 0;
+  const ph = p.photos[idx] || p.photos[0];
+  const info = computePhotoTitleAndDim(ph);
+  const isSpecialCat = ['tuveoonsus', 'oksaauk', 'oksakrae', 'erikuju'].includes(ph.category);
+  const sentKey = `${p.product_id}_${ph.id}`;
+  const isSent = !!sentInterests[sentKey];
+
+  const thumbsHtml = p.photos.length > 1 ? `
+    <div class="thumb-strip">
+      ${p.photos.map((tp, i) => `
+        <button type="button" class="thumb-btn ${i === idx ? 'active' : ''}"
+          onclick="selectProductPhoto('${p.product_id}', ${i})"
+          title="${computePhotoTitleAndDim(tp).shortTitle}">
+          <img src="/photos/${tp.id}.webp" alt="${tp.id}" loading="lazy">
+          <span>${tp.id.replace('ID', '')}</span>
+        </button>
+      `).join('')}
+    </div>
+  ` : '';
+
+  const arrowsHtml = p.photos.length > 1 ? `
+    <div class="nav-arrows">
+      <button type="button" onclick="stepProductPhoto('${p.product_id}', -1)" title="Eelmine foto">‹</button>
+      <button type="button" onclick="stepProductPhoto('${p.product_id}', 1)" title="Järgmine foto">›</button>
+    </div>
+  ` : '';
+
+  const showcaseBadge = (ph.showcase_tag || p.showcase_tag)
+    ? `<span class="badge-showcase">🌟 ${ph.showcase_tag || p.showcase_tag}</span>`
+    : '';
+
+  const showcaseBox = (ph.showcase_note || p.showcase_note)
+    ? `<div class="showcase-box">${ph.showcase_note || p.showcase_note}</div>`
+    : '';
+
+  return `
+    <article class="pcard ${p.is_showcase ? 'showcase-card' : ''}" id="${p.product_id}">
+      <div class="pcard-media">
+        <img class="main-img" src="/photos/${ph.id}.webp" alt="${info.shortTitle}" loading="lazy"
+          onclick="openLightbox('${ph.id}', '${p.product_id}')">
+        <div class="pcard-TopBadges">
+          <span class="badge-pid">${p.product_id} · ${ph.id} (${idx + 1}/${p.photos.length})</span>
+          ${showcaseBadge}
+        </div>
+        <div class="pcard-BottomBar">
+          <span class="short-filename" data-short-title-for="${ph.id}">${info.shortTitle}</span>
+          ${arrowsHtml}
+        </div>
+      </div>
+      ${thumbsHtml}
+      <div class="pcard-body">
+        <div class="cat-row">
+          ${p.categories.map(c => `<span class="cat-tag ${['tuveoonsus','oksaauk','oksakrae','erikuju'].includes(c)?'special':''}">${c}</span>`).join('')}
+          <span class="dim-badge ${info.dimClass ? 'has-dim' : ''}" data-dim-badge-for="${ph.id}">
+            ${info.dimClass ? `📏 ${info.dimClass} (${info.rawDim} cm)` : '📏 mõõt täpsustamisel'}
+          </span>
+        </div>
+        <h3 class="pcard-title">${p.title}</h3>
+        <p class="pcard-desc">${ph.detail_desc} · <span style="opacity:0.8">Fotod: ${p.id_range}</span></p>
+        ${showcaseBox}
+        <div class="dim-editor">
+          <label for="dim_${ph.id}">Lisa mõõt (cm):</label>
+          <input type="text" id="dim_${ph.id}" value="${info.rawDim}" placeholder="nt 35"
+            oninput="setCallerDim('${ph.id}', this.value, '${p.product_id}')">
+          <span class="scale-hint">${p.scale_ref}</span>
+        </div>
+        <div class="pcard-actions">
+          <button type="button" class="btn interest-btn ${isSent ? 'sent' : ''}"
+            onclick="handleInterestClick('${p.product_id}', '${ph.id}')">
+            ${isSent ? '✔ Huviteade saadetud (saada uuesti / lisa kontakt)' : '👋 Olen huvitatud (Eeltelli / küsi infot)'}
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderSinglePhotoCard(ph) {
+  const prod = CATALOG.products.find(p => p.product_id === ph.product_id);
+  const info = computePhotoTitleAndDim(ph);
+  const sentKey = `${ph.product_id}_${ph.id}`;
+  const isSent = !!sentInterests[sentKey];
+
+  return `
+    <article class="pcard ${ph.showcase_tag ? 'showcase-card' : ''}" id="photo-${ph.id}">
+      <div class="pcard-media">
+        <img class="main-img" src="/photos/${ph.id}.webp" alt="${info.shortTitle}" loading="lazy"
+          onclick="openLightbox('${ph.id}', '${ph.product_id}')">
+        <div class="pcard-TopBadges">
+          <span class="badge-pid">${ph.id} · ${ph.product_id}</span>
+          ${ph.showcase_tag ? `<span class="badge-showcase">🌟 ${ph.showcase_tag}</span>` : ''}
+        </div>
+        <div class="pcard-BottomBar">
+          <span class="short-filename" data-short-title-for="${ph.id}">${info.shortTitle}</span>
+        </div>
+      </div>
+      <div class="pcard-body">
+        <div class="cat-row">
+          <span class="cat-tag ${['tuveoonsus','oksaauk','oksakrae','erikuju'].includes(ph.category)?'special':''}">${ph.category}</span>
+          <span class="dim-badge ${info.dimClass ? 'has-dim' : ''}" data-dim-badge-for="${ph.id}">
+            ${info.dimClass ? `📏 ${info.dimClass} (${info.rawDim} cm)` : '📏 mõõt täpsustamisel'}
+          </span>
+        </div>
+        <h3 class="pcard-title" style="font-family:monospace;font-size:0.98rem;" data-short-title-for="${ph.id}">${info.shortTitle}</h3>
+        <p class="pcard-desc">${ph.detail_desc}</p>
+        ${ph.showcase_note ? `<div class="showcase-box">${ph.showcase_note}</div>` : ''}
+        <div class="dim-editor">
+          <label for="dim_p_${ph.id}">Mõõt (cm):</label>
+          <input type="text" id="dim_p_${ph.id}" value="${info.rawDim}" placeholder="nt 35"
+            oninput="setCallerDim('${ph.id}', this.value, '${ph.product_id}')">
+          <span class="scale-hint">Orig: ${ph.original_name.slice(0, 19)}…</span>
+        </div>
+        <div class="pcard-actions">
+          <button type="button" class="btn interest-btn ${isSent ? 'sent' : ''}"
+            onclick="handleInterestClick('${ph.product_id}', '${ph.id}')">
+            ${isSent ? '✔ Huviteade saadetud (lisa kontakt)' : '👋 Olen huvitatud'}
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// Active modal state
+let currentModalProduct = null;
+let currentModalPhoto = null;
+
+async function sendNotificationRequest(payloadObj) {
+  // 1. Try serverless backend /api/interest
+  try {
+    const res = await fetch('/api/interest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payloadObj)
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.ok && !data.fallback_needed) {
+      return { ok: true, via: 'api' };
+    }
+  } catch (e) {}
+
+  // 2. Direct browser fallback to activated FormSubmit endpoint for reneealuste@gmail.com
+  try {
+    const isContact = payloadObj.mode === 'contact_details';
+    const subject = `${isContact ? '[Puidujaak.ee EELTELLIMUS + KONTAKT]' : '[Puidujaak.ee OLEN HUVITATUD]'} ${payloadObj.product_id} / ${payloadObj.photo_id} (${payloadObj.short_title})`;
+    const fsPayload = {
+      _subject: subject,
+      _template: 'table',
+      _captcha: 'false',
+      Toote_ID: payloadObj.product_id,
+      Foto_ID: payloadObj.photo_id,
+      Faili_lühinimi: payloadObj.short_title,
+      Toote_nimetus: payloadObj.product_title,
+      Kategooria: payloadObj.category,
+      Mõõt_cm: payloadObj.dimension_cm ? `${payloadObj.dimension_cm} cm` : 'Müüja täpsustamisel',
+      Mõõduklass: payloadObj.dimension_class || 'Täpsustamisel',
+      Huvilise_nimi: payloadObj.buyer_name || '(1-kliki kiirhuviteade)',
+      Huvilise_kontakt: payloadObj.buyer_contact || '(1-kliki kiirhuviteade)',
+      Märkus: payloadObj.buyer_note || 'Vajutas nuppu Olen huvitatud',
+      Aeg: new Date().toLocaleString('et-EE')
+    };
+    const r2 = await fetch('https://formsubmit.co/ajax/78c3a12c74aa756d1d5e36e3c5f0168b', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(fsPayload)
+    });
+    const d2 = await r2.json().catch(() => ({}));
+    if (r2.ok && (d2.success === 'true' || d2.success === true)) {
+      return { ok: true, via: 'formsubmit' };
+    }
+  } catch (e) {}
+
+  return { ok: false };
+}
+
+async function handleInterestClick(productId, photoId) {
+  const prod = CATALOG.products.find(p => p.product_id === productId);
+  const photo = CATALOG.photos.find(x => x.id === photoId) || (prod && prod.photos[0]);
+  if (!prod || !photo) return;
+
+  currentModalProduct = prod;
+  currentModalPhoto = photo;
+
+  const info = computePhotoTitleAndDim(photo);
+  const sentKey = `${prod.product_id}_${photo.id}`;
+  sentInterests[sentKey] = true;
+
+  // Populate & open modal immediately
+  document.getElementById('modalHeading').textContent = `Olen huvitatud: ${prod.product_id}`;
+  document.getElementById('modalThumb').src = `/photos/${photo.id}.webp`;
+  document.getElementById('modalProdId').textContent = prod.product_id;
+  document.getElementById('modalPhotoId').textContent = photo.id;
+  document.getElementById('modalShortTitle').textContent = info.shortTitle;
+  document.getElementById('modalProdTitle').textContent = `${prod.title} (kategooria: ${photo.category})`;
+  document.getElementById('optDim').value = info.rawDim;
+  onModalDimInput(info.rawDim);
+
+  const banner = document.getElementById('modalNotificationBanner');
+  banner.className = 'status-banner sending';
+  banner.innerHTML = `⏳ Saadame kohese huviteate toote <b>${prod.product_id} (${info.shortTitle})</b> kohta müüja Gmailile...`;
+
+  document.getElementById('interestModal').classList.add('on');
+  renderCatalog();
+
+  // Fire instant notification immediately so 1 click on "Olen huvitatud" already delivers the email!
+  const res = await sendNotificationRequest({
+    product_id: prod.product_id,
+    photo_id: photo.id,
+    short_title: info.shortTitle,
+    product_title: prod.title,
+    category: photo.category,
+    dimension_cm: info.rawDim,
+    dimension_class: info.dimClass,
+    mode: 'instant_click'
+  });
+
+  if (res.ok) {
+    banner.className = 'status-banner';
+    banner.innerHTML = `✅ <b>Teavitus saadetud müüja Gmailile!</b><br>Toode <b>${prod.product_id}</b> (<code>${info.shortTitle}</code>) on märgitud huvipakkuvaks. Soovi korral lisa allpool oma kontakt.`;
+    showToast(`✅ Huviteade (${prod.product_id} / ${photo.id}) saadetud Gmailile!`);
+  } else {
+    banner.className = 'status-banner';
+    banner.innerHTML = `✅ Huvi registreeritud tootele <b>${prod.product_id}</b> (<code>${info.shortTitle}</code>). Täida allpool kontakt või vajuta Saada.`;
+  }
+}
+
+function onModalDimInput(val) {
+  if (!currentModalPhoto) return;
+  setCallerDim(currentModalPhoto.id, val, currentModalProduct ? currentModalProduct.product_id : '');
+  const info = computePhotoTitleAndDim(currentModalPhoto);
+  document.getElementById('modalShortTitle').textContent = info.shortTitle;
+  const prev = document.getElementById('modalDimPreview');
+  if (info.dimClass) {
+    prev.textContent = `→ Uus failinimi koos mõõduklassiga: ${info.shortTitle}`;
+  } else {
+    prev.textContent = `→ Failinimi (ilma mõõduta): ${info.shortTitle}`;
+  }
+}
+
+async function submitOptionalDetails(e) {
+  e.preventDefault();
+  if (!currentModalProduct || !currentModalPhoto) return;
+  const btn = document.getElementById('optSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Saadan...';
+
+  const info = computePhotoTitleAndDim(currentModalPhoto);
+  const buyerName = document.getElementById('optName').value.trim();
+  const buyerContact = document.getElementById('optContact').value.trim();
+  const buyerNote = document.getElementById('optNote').value.trim();
+
+  await sendNotificationRequest({
+    product_id: currentModalProduct.product_id,
+    photo_id: currentModalPhoto.id,
+    short_title: info.shortTitle,
+    product_title: currentModalProduct.title,
+    category: currentModalPhoto.category,
+    dimension_cm: info.rawDim,
+    dimension_class: info.dimClass,
+    buyer_name: buyerName,
+    buyer_contact: buyerContact,
+    buyer_note: buyerNote,
+    mode: 'contact_details'
+  });
+
+  btn.disabled = false;
+  btn.textContent = '✔ Lisainfo saadetud!';
+  showToast(`📩 Lisainfo toote ${currentModalProduct.product_id} kohta saadetud!`);
+  setTimeout(() => {
+    btn.textContent = '📩 Saada lisainfo / kontakt müüjale';
+    closeInterestModal();
+  }, 900);
+}
+
+function closeInterestModal() {
+  document.getElementById('interestModal').classList.remove('on');
+}
+
+function openLightbox(photoId, productId) {
+  const ph = CATALOG.photos.find(x => x.id === photoId);
+  if (!ph) return;
+  const info = computePhotoTitleAndDim(ph);
+  document.getElementById('lbTitle').textContent = `${ph.product_id} · ${info.shortTitle}`;
+  document.getElementById('lbSub').textContent = ph.detail_desc;
+  document.getElementById('lbImg').src = `/photos/${ph.id}.webp`;
+  document.getElementById('lbDriveLink').href = ph.drive_link;
+  const btn = document.getElementById('lbInterestBtn');
+  btn.onclick = () => {
+    document.getElementById('lightboxModal').classList.remove('on');
+    handleInterestClick(productId, photoId);
+  };
+  document.getElementById('lightboxModal').classList.add('on');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), 4500);
+}
+
+// Camera tool logic (preserved from Puidujaak v1)
+(() => {
+  const M = new Image();
+  M.src = '/img/euro1.png';
+  const $ = i => document.getElementById(i);
+  const v = $('vid'), c = $('lõuend'), o = $('olek'), g = $('pildid');
+  let st = null, n = 0;
+  function lisa(url) {
+    n++;
+    const f = document.createElement('figure');
+    f.style.margin = '0';
+    f.innerHTML = '<img style="width:100%;border-radius:8px;border:1px solid #e6dccb" alt="Puidu pilt '+n+'"><figcaption style="font-size:0.85rem;"><a style="color:#8a5a2b" download="puidujaak-pilt-'+n+'.jpg">Laadi alla</a> · <a href="#" style="color:#8a5a2b" class="eemalda">Eemalda</a></figcaption>';
+    f.querySelector('img').src = url;
+    f.querySelector('a').href = url;
+    f.querySelector('.eemalda').onclick = e => { e.preventDefault(); f.remove(); };
+    g.prepend(f);
+  }
+  function sulge() {
+    if (st) st.getTracks().forEach(t => t.stop());
+    st = null;
+    v.style.display = 'none';
+    $('tee').disabled = $('sulge').disabled = true;
+  }
+  $('ava').onclick = async () => {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      o.textContent = 'See brauser ei toeta kaamerat – kasuta nuppu „Vali pilt“.';
+      return;
+    }
+    try {
+      st = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false });
+      v.srcObject = st;
+      v.style.display = 'block';
+      $('tee').disabled = $('sulge').disabled = false;
+      o.textContent = '';
+    } catch (e) {
+      o.textContent = 'Kaamerat ei saanud avada (' + e.name + '). Luba kaamera kasutus või kasuta nuppu „Vali pilt“.';
+    }
+  };
+  $('tee').onclick = () => {
+    c.width = v.videoWidth;
+    c.height = v.videoHeight;
+    const x = c.getContext('2d');
+    x.drawImage(v, 0, 0);
+    if ($('templi').checked) {
+      const d = Math.round(c.width * 0.07), p = Math.round(d * 0.25), fs = Math.max(12, Math.round(d * 0.28)), t = '1 € münt = 23,25 mm (mõõtkava)';
+      x.font = fs + 'px system-ui,sans-serif';
+      const tw = x.measureText(t).width, bw = d + tw + p * 3, bh = d + p * 2, bx = c.width - bw - p, by = c.height - bh - p;
+      x.fillStyle = 'rgba(255,255,255,.88)';
+      x.fillRect(bx, by, bw, bh);
+      if (M.complete) x.drawImage(M, bx + p, by + p, d, d);
+      x.fillStyle = '#2f2418';
+      x.textBaseline = 'middle';
+      x.fillText(t, bx + d + p * 2, by + bh / 2);
+    }
+    lisa(c.toDataURL('image/jpeg', 0.92));
+  };
+  $('sulge').onclick = sulge;
+  $('fail').onchange = e => { [...e.target.files].forEach(f => lisa(URL.createObjectURL(f))); e.target.value = ''; };
+})();
+
+// Initial render
+renderCatalog();
+</script>
+</body>
+</html>
