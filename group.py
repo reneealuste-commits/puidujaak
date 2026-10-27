@@ -223,6 +223,20 @@ PRODUCT_GROUPS_SPEC = [
     (171, 174, "alus", "Kõrged puidust transpordiraamid / püstkastid aluspõhjal (~8–10 tk reas, kõrgus ~195 cm, põhi ~120×90 cm, keskmine põikpuu 10 salli triipu = 100 cm kõrgusel)", "Eesti sall fotol (10 triipu = 100 cm)", "high"),
     (176, 179, "klots", "Metallkonteiner (~2,5 m³, H 110 cm) täis saetud puiduklotse (20–25 × 10 × 4,5 cm) ja pinnalaudu", "Eesti sall fotol (1 triip = 10 cm)", "high"),
     (180, 185, "laud", "Suur pinnapuidu, pindade ja küttepuidu koondhunnik (6 vaadet igast küljest: kõrgus ~240–260 cm, eesmine laotud virn ~110 cm, pindade pikkus ~300–450 cm, kogumaht ~25–35 rm)", "Eesti sall fotol (160×25 cm, triip 10 cm)", "high"),
+    # 13 UUT TOODET (26.10.2026 Google Photosest, PUIDUJAK-068 kuni PUIDUJAK-080, ID186..ID212):
+    (186, 186, "palk", "Kolm ümarat lehtpuupakku / tüvejuppi kivisel pinnasel (Ø ~35–45 cm)", "Õues kivisel pinnasel", "high"),
+    (187, 188, "ketas", "Suur sakilise servaga tähekujuline tüveketas / ristlõige okste peal (~65 cm)", "Aiareha fotol mõõtkavaks", "high"),
+    (189, 190, "palk", "Mitme haruga skulpturaalne känd / puidust alus asfaldil (~55×45 cm)", "Asfaldil õues", "high"),
+    (191, 192, "ketas", "Loodusliku südamekujuga tüveketas / ristlõige võrgu peal (~38 cm, 50 € kupüüriga)", "50 € kupüür fotol (140×77 mm, ID192)", "high"),
+    (193, 193, "tuveoonsus", "Suur seest pehkinud ja tumeda õõnsusega tüveosa võrgu peal (~50 cm, kupüüriga)", "Kupüür / kaart serval mõõtkavaks", "high"),
+    (194, 195, "ketas", "Südamekujuline ja erikujuline tüveketas lehtedel ja härmatisel (~42 cm)", "Lähivõte maapinnal", "high"),
+    (196, 196, "palk", "Püstine tüvepost ja palgijupid sügislehtedel (~60–90 cm)", "Õues sügislehtedel", "high"),
+    (197, 201, "erikuju", "Massiivsest tüveplaadist kolme puitjalaga rustikaalne abilaud / kännulaud (~55×45 cm)", "Saue garaažiboksis (klaaskolvid mõõtkavaks ID201)", "high"),
+    (202, 203, "tuveoonsus", "Südamekujulise kontuuri ja keskse õõnsusega paks tüveketas / kauss (~40 cm)", "Saue garaažiboksis tellisseina ääres", "high"),
+    (204, 204, "tuveoonsus", "Seest õõnes valge kasetohuga kasepakk (~35 cm) kuuseokste juures", "Saue garaažiboksis kuuseokste juures", "high"),
+    (205, 205, "koor", "Sügava tekstuuriga tume korbatanud kooretükk / pahk (~30 cm)", "Lähivõte betoonpõrandal", "high"),
+    (206, 207, "tuveoonsus", "Suur loodusliku siseõõnsusega tüveketas (~48 cm), ümar ketas ja paksu korbaga õõnes tüvejupp", "Saue garaažiboksis tellisseina ääres", "high"),
+    (208, 212, "erikuju", "Heledast servamata tüveplaadist okslike jalgadega rustikaalne diivanilaud / pukk (~50×45 cm)", "Saue garaažiboksis (klaaskarahvin mõõtkavaks ID212)", "high"),
 ]
 
 # Lisafotod samale tootele (ID175 kuulub PUIDUJAK-058 koorekonteineri juurde koos ID150-ga)
@@ -249,6 +263,19 @@ DEFAULT_DIMENSIONS_BY_SEQ = {
     175: "150",
     176: "22", 177: "22", 178: "22", 179: "22",
     180: "300", 181: "300", 182: "300", 183: "300", 184: "300", 185: "300",
+    186: "45",
+    187: "65", 188: "65",
+    189: "55", 190: "55",
+    191: "38", 192: "38",
+    193: "50",
+    194: "42", 195: "42",
+    196: "90",
+    197: "55", 198: "55", 199: "55", 200: "55", 201: "55",
+    202: "40", 203: "40",
+    204: "35",
+    205: "30",
+    206: "48", 207: "42",
+    208: "50", 209: "50", 210: "50", 211: "50", 212: "50",
 }
 
 NEW_LOCAL_PHOTOS = [
@@ -312,6 +339,33 @@ NEW_LOCAL_PHOTOS = [
     {"id": "local_ID183", "name": "PXL_20261024_155552000.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID183.webp", "modified_time": "2026-10-24T12:55:52.000Z"},
     {"id": "local_ID184", "name": "PXL_20261024_155646000.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID184.webp", "modified_time": "2026-10-24T12:56:46.000Z"},
     {"id": "local_ID185", "name": "PXL_20261024_155914000.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID185.webp", "modified_time": "2026-10-24T12:59:14.000Z"},
+    {"id": "local_ID186", "name": "PXL_20261026_103006183.NIGHT.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID186.webp", "modified_time": "2026-10-26T10:30:06.000Z"},
+    {"id": "local_ID187", "name": "PXL_20261026_105009552.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID187.webp", "modified_time": "2026-10-26T10:50:09.000Z"},
+    {"id": "local_ID188", "name": "PXL_20261026_105013676.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID188.webp", "modified_time": "2026-10-26T10:50:13.000Z"},
+    {"id": "local_ID189", "name": "PXL_20261026_130537979.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID189.webp", "modified_time": "2026-10-26T13:05:37.000Z"},
+    {"id": "local_ID190", "name": "PXL_20261026_130611036.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID190.webp", "modified_time": "2026-10-26T13:06:11.000Z"},
+    {"id": "local_ID191", "name": "PXL_20261026_130732357.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID191.webp", "modified_time": "2026-10-26T13:07:32.000Z"},
+    {"id": "local_ID192", "name": "PXL_20261026_130818238.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID192.webp", "modified_time": "2026-10-26T13:08:18.000Z"},
+    {"id": "local_ID193", "name": "PXL_20261026_130934395.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID193.webp", "modified_time": "2026-10-26T13:09:34.000Z"},
+    {"id": "local_ID194", "name": "PXL_20261026_131831789.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID194.webp", "modified_time": "2026-10-26T13:18:31.000Z"},
+    {"id": "local_ID195", "name": "PXL_20261026_131953195.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID195.webp", "modified_time": "2026-10-26T13:19:53.000Z"},
+    {"id": "local_ID196", "name": "PXL_20261026_132127691.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID196.webp", "modified_time": "2026-10-26T13:21:27.000Z"},
+    {"id": "local_ID197", "name": "PXL_20261026_155614747.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID197.webp", "modified_time": "2026-10-26T15:56:14.000Z"},
+    {"id": "local_ID198", "name": "PXL_20261026_155628021.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID198.webp", "modified_time": "2026-10-26T15:56:28.000Z"},
+    {"id": "local_ID199", "name": "PXL_20261026_155628244.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID199.webp", "modified_time": "2026-10-26T15:56:28.000Z"},
+    {"id": "local_ID200", "name": "PXL_20261026_155634982.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID200.webp", "modified_time": "2026-10-26T15:56:34.000Z"},
+    {"id": "local_ID201", "name": "PXL_20261026_155732722.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID201.webp", "modified_time": "2026-10-26T15:57:32.000Z"},
+    {"id": "local_ID202", "name": "PXL_20261026_155805849.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID202.webp", "modified_time": "2026-10-26T15:58:05.000Z"},
+    {"id": "local_ID203", "name": "PXL_20261026_155811284.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID203.webp", "modified_time": "2026-10-26T15:58:11.000Z"},
+    {"id": "local_ID204", "name": "PXL_20261026_155821436.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID204.webp", "modified_time": "2026-10-26T15:58:21.000Z"},
+    {"id": "local_ID205", "name": "PXL_20261026_155822751.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID205.webp", "modified_time": "2026-10-26T15:58:22.000Z"},
+    {"id": "local_ID206", "name": "PXL_20261026_155911294.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID206.webp", "modified_time": "2026-10-26T15:59:11.000Z"},
+    {"id": "local_ID207", "name": "PXL_20261026_155940027.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID207.webp", "modified_time": "2026-10-26T15:59:40.000Z"},
+    {"id": "local_ID208", "name": "PXL_20261026_160004962.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID208.webp", "modified_time": "2026-10-26T16:00:04.000Z"},
+    {"id": "local_ID209", "name": "PXL_20261026_160015438.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID209.webp", "modified_time": "2026-10-26T16:00:15.000Z"},
+    {"id": "local_ID210", "name": "PXL_20261026_160020090.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID210.webp", "modified_time": "2026-10-26T16:00:20.000Z"},
+    {"id": "local_ID211", "name": "PXL_20261026_160027010.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID211.webp", "modified_time": "2026-10-26T16:00:27.000Z"},
+    {"id": "local_ID212", "name": "PXL_20261026_160108211.MP.jpg", "web_view_link": "https://puidujaak.vercel.app/photos/ID212.webp", "modified_time": "2026-10-26T16:01:08.000Z"},
 ]
 
 
@@ -461,7 +515,7 @@ def get_product_access_and_location(
             "🔒 Suletud territoorium (kokkuleppel): puitaluste virn (3–4 tk) ja männipalgijupid (~40–60 cm) "
             "asuvad laoplatsil poolhaagiste juures. Sissepääs väravast telefonitsi kokkuleppel."
         )
-    elif prod_idx in (55, 56, 57):
+    elif prod_idx in (55, 56, 57) or 68 <= prod_idx <= 80:
         access_type = "dropoff_24_7"
         default_lat, default_lng = 59.318800, 24.561200
         loc_name = "Saue garaažiboks nr 4 (Nurmesalu tn 1, Saue) – 24/7 Dropoff-punkt"
@@ -551,7 +605,7 @@ def main():
         uniq = []
         for r in existing:
             name = r["original_name"]
-            if name.startswith("PXL_20261024_"):
+            if name.startswith("PXL_20261024_") or name.startswith("PXL_20261026_"):
                 continue
             entry = {
                 "id": r["file_id"],
@@ -572,7 +626,7 @@ def main():
             seen[nf["name"]] = [nf]
             uniq.append(nf)
 
-    assert len(uniq) == 185, f"Expected 185 unique photos, got {len(uniq)}"
+    assert len(uniq) == 212, f"Expected 185 unique photos, got {len(uniq)}"
 
     rows = []
     out = []
@@ -602,7 +656,7 @@ def main():
                     )
                 )
 
-    assert covered_indices == set(range(1, 186)), "Not all 1..185 photos covered!"
+    assert covered_indices == set(range(1, 213)), "Not all 1..185 photos covered!"
 
     Path("/workspace/groups.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     with open("/workspace/puidujak_mapping.csv", "w", newline="", encoding="utf-8") as fh:

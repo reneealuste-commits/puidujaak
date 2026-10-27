@@ -61,6 +61,19 @@ SHOWCASE_PRODUCTS = {
     "PUIDUJAK-065": ("UUS! Püstkastid / raamid (~195 cm)", "Kõrged puidust transpordiraamid / püstkastid aluspõhjal (~8–10 tk reas, H ~195 cm, põhi ~120×90 cm).", 0),
     "PUIDUJAK-066": ("UUS! Klotsikonteiner (~2,5 m³)", "Metallkonteiner (H 110 cm) täis saetud puiduklotse (20–25 × 10 × 4,5 cm) ja pinnalaudu.", 0),
     "PUIDUJAK-067": ("UUS! Suur koondhunnik (~25–35 rm)", "Suur pinnapuidu, pindade ja küttepuidu koondhunnik (6 vaadet: H ~240–260 cm, eesmine virn ~110 cm, L ~300–450 cm).", 0),
+    "PUIDUJAK-068": ("UUS 26.10! Lehtpuupakud (~45 cm)", "Kolm ümarat lehtpuupakku / tüvejuppi kivisel pinnasel (Ø ~35–45 cm).", 0),
+    "PUIDUJAK-069": ("UUS 26.10! Tähekujuline tüveketas (~65 cm)", "Suur sakilise servaga tähekujuline tüveketas / ristlõige okste peal (~65 cm, aiareha mõõtkavaks).", 0),
+    "PUIDUJAK-070": ("UUS 26.10! Mitme haruga känd (~55 cm)", "Mitme haruga skulpturaalne känd / puidust alus asfaldil (~55×45 cm).", 0),
+    "PUIDUJAK-071": ("UUS 26.10! Südamekujuline ketas (50 €)", "Loodusliku südamekujuga tüveketas / ristlõige võrgu peal (~38 cm, mõõtkavaks 50 € kupüür).", 1),
+    "PUIDUJAK-072": ("UUS 26.10! Õõnes tüvepakk (~50 cm)", "Suur seest pehkinud ja tumeda õõnsusega tüveosa võrgu peal (~50 cm, kupüüriga).", 0),
+    "PUIDUJAK-073": ("UUS 26.10! Südamekujuline ketas (~42 cm)", "Südamekujuline ja erikujuline tüveketas lehtedel ja härmatisel (~42 cm).", 1),
+    "PUIDUJAK-074": ("UUS 26.10! Tüvepost & palgid (~90 cm)", "Püstine tüvepost ja palgijupid sügislehtedel (~60–90 cm).", 0),
+    "PUIDUJAK-075": ("UUS 26.10! Kännulaud / abilaud (~55 cm)", "Massiivsest tüveplaadist kolme puitjalaga rustikaalne abilaud / kännulaud (~55×45 cm, 5 vaadet).", 4),
+    "PUIDUJAK-076": ("UUS 26.10! Õõnsusega tüvekauss (~40 cm)", "Südamekujulise kontuuri ja keskse õõnsusega paks tüveketas / kauss (~40 cm).", 0),
+    "PUIDUJAK-077": ("UUS 26.10! Õõnes kasepakk (~35 cm)", "Seest õõnes valge kasetohuga kasepakk (~35 cm) kuuseokste juures.", 0),
+    "PUIDUJAK-078": ("UUS 26.10! Korbatanud pahk (~30 cm)", "Sügava tekstuuriga tume korbatanud kooretükk / pahk (~30 cm).", 0),
+    "PUIDUJAK-079": ("UUS 26.10! Õõnes tüveketas (~48 cm)", "Suur loodusliku siseõõnsusega tüveketas (~48 cm), ümar ketas ja paksu korbaga õõnes tüvejupp.", 0),
+    "PUIDUJAK-080": ("UUS 26.10! Rustikaalne laud (~50 cm)", "Heledast servamata tüveplaadist okslike jalgadega rustikaalne diivanilaud / pukk (~50×45 cm, 5 vaadet).", 4),
 }
 
 PHOTO_SHOWCASE = {
@@ -756,3 +769,81 @@ def update_index_html():
 
 if __name__ == "__main__":
     update_index_html()
+
+
+def inject_unified_features():
+    import shutil
+    html_path = Path("/workspace/puidujaak/veeb_deploy/index.html")
+    base_snap = Path("/workspace/puidujaak/index_base_snapshot.html")
+    if base_snap.exists():
+        shutil.copyfile(base_snap, html_path)
+
+    update_index_html()
+    html = html_path.read_text(encoding="utf-8")
+
+    # 1. Add Leaflet CSS + unified.css in <head>
+    head_inject = (
+        '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">\n'
+        '<link rel="stylesheet" href="/unified.css">\n</head>'
+    )
+    if '/unified.css' not in html:
+        html = html.replace('</head>', head_inject, 1)
+
+    # 2. Add Mode Switcher (Basic / Advanced), Shortlist & Theme Toggle in Topbar
+    topbar_controls = """
+    <div class="mode-cluster">
+      <div class="mode-switch-group" role="group" aria-label="Vaate režiim">
+        <button type="button" class="mode-switch-btn" id="modeBasicBtn" onclick="switchAppMode('basic')">🔥 Basic (Swipe)</button>
+        <button type="button" class="mode-switch-btn active" id="modeAdvancedBtn" onclick="switchAppMode('advanced')">🛠️ Advanced</button>
+      </div>
+      <button type="button" class="shortlist-nav-btn" id="shortlistNavBtn" onclick="openShortlistModal()">💚 Lemmikud (<span id="shortlistCountBadge">0</span>)</button>
+      <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Tume</button>
+    </div>
+    """
+    if 'id="modeBasicBtn"' not in html:
+        html = html.replace(
+            '<div class="nav-links">',
+            topbar_controls + '\n    <div class="nav-links">\n      <a href="#mootmine" onclick="switchAppMode(\'advanced\')"><b>📏 Mõõda puitu</b></a>\n      <a href="#kaart" onclick="switchAppMode(\'advanced\')">🗺️ Kaart</a>',
+            1
+        )
+
+    # 3. Add hero mode quick buttons
+    if 'id="heroBasicBtn"' not in html:
+        html = html.replace(
+            '<a class="btn" href="#turuplats">Sirvi 80 toodet (212 fotot) ↓</a>',
+            '<a class="btn" href="#turuplats" onclick="switchAppMode(\'advanced\')">Sirvi 80 toodet ↓</a>\n      <button class="btn sec" type="button" id="heroBasicBtn" onclick="switchAppMode(\'basic\')">🔥 Ava Basic Mode (Tinder-Swipe)</button>\n      <a class="btn sec" href="#mootmine" onclick="switchAppMode(\'advanced\')">📏 Ava puidu mõõtmislõuend</a>',
+            1
+        )
+
+    # 4. Inject unified_sections.html before <section id="turuplats"
+    sections_html = Path("/workspace/puidujaak/veeb_deploy/unified_sections.html").read_text(encoding="utf-8")
+    if 'id="basicSwipeSection"' not in html:
+        html = html.replace('<section id="turuplats"', sections_html + '\n<section id="turuplats"', 1)
+
+    # 5. Add "📏 Mõõda lõuendil" & "💚 Lemmik" buttons to product cards
+    if 'loadCatalogPhotoIntoMeasure' not in html:
+        html = html.replace(
+            '<div class="pcard-actions">',
+            '<div class="pcard-actions">\n          <div style="display:flex;gap:0.4rem;">\n            <button type="button" class="btn sec" style="flex:1;padding:0.45rem 0.6rem;font-size:0.82rem;" onclick="loadCatalogPhotoIntoMeasure(\'${ph.id}\', \'${p.product_id}\')">📏 Mõõda lõuendil</button>\n            <button type="button" class="btn sec" style="padding:0.45rem 0.65rem;font-size:0.82rem;" onclick="toggleShortlist(\'${p.product_id}\')">💚 Lemmik</button>\n          </div>',
+            1
+        )
+
+    # 6. Include Leaflet JS + unified.js before </body>
+    if '/unified.js' not in html:
+        html = html.replace(
+            '</body>',
+            '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>\n<script src="/unified.js"></script>\n</body>',
+            1
+        )
+
+    html_path.write_text(html, encoding="utf-8")
+    veeb_dir = Path("/workspace/puidujaak/veeb")
+    if veeb_dir.exists():
+        (veeb_dir / "index.html").write_text(html, encoding="utf-8")
+        shutil.copyfile("/workspace/puidujaak/veeb_deploy/unified.css", veeb_dir / "unified.css")
+        shutil.copyfile("/workspace/puidujaak/veeb_deploy/unified.js", veeb_dir / "unified.js")
+    print("Successfully injected unified features (Light/Dark, Basic Swipe, Advanced Map & Wood Measure).")
+
+
+if __name__ == "__main__":
+    inject_unified_features()
