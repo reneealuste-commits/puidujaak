@@ -16,6 +16,13 @@ if (fs.existsSync('assets_part3a.txt') && fs.existsSync('assets_part3b.txt')) {
   Object.assign(bundle, b3);
 }
 
+if (fs.existsSync('assets_part4.txt')) {
+  const p4 = fs.readFileSync('assets_part4.txt', 'utf8').trim();
+  const c4 = Buffer.from(p4, 'base64');
+  const b4 = JSON.parse(zlib.inflateSync(c4).toString('utf8'));
+  Object.assign(bundle, b4);
+}
+
 for (const [relPath, b64Data] of Object.entries(bundle)) {
   const fullPath = path.join('public', relPath);
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
@@ -23,4 +30,6 @@ for (const [relPath, b64Data] of Object.entries(bundle)) {
 }
 
 fs.copyFileSync('index.html', path.join('public', 'index.html'));
+if (fs.existsSync('unified.css')) fs.copyFileSync('unified.css', path.join('public', 'unified.css'));
+if (fs.existsSync('unified.js')) fs.copyFileSync('unified.js', path.join('public', 'unified.js'));
 console.log('Extracted', Object.keys(bundle).length, 'assets + index.html into public/');
